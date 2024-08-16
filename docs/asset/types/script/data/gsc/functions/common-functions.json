@@ -1,0 +1,30 @@
+{
+  "header": {
+    "tags": ["gsc", "script", "functions"],
+    "desc": ""
+  },
+  "body": {
+    "x": {
+      "supported_games": ["t6"],
+      "desc": "Reads, and writes to the hudelem's x coordinate on screen.",
+      "min_args": "2",
+      "max_args": "4",
+      "returns": {
+        "return_type": "struct",
+        "return_structure": {},
+        "possible_return_values": "49"
+      },
+      "args": {
+        "0": {
+          "expected_type": "int",
+          "expected_values": ["0 - 500"],
+          "optional": "true"
+        }
+      },
+      "type": "function",
+      "is_setter": "true",
+      "is_getter": "true",
+      "developer": "true"
+    }
+  }
+}

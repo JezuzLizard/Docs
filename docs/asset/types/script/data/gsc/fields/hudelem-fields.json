@@ -1,0 +1,254 @@
+{
+  "header": {
+    "tags": ["gsc", "script", "fields", "hudelem"],
+    "desc": "./field-descriptions.md#script-hudelem-fields"
+  },
+  "body": {
+    "x": {
+      "supported_games": ["t6"],
+      "permissions": ["read", "write"],
+      "default_value": "0.0f",
+      "value_type": "float",
+      "value_subtypes": ["float"],
+      "read_logic": {
+        "error_handling": [],
+        "behavior": "direct"
+      },
+      "write_logic": {
+        "error_handling": [],
+        "behavior": "direct"
+      },
+      "desc": "Reads, and writes to the hudelem's x coordinate on screen. Coordinates are relative to the vertical and horizontal alignments for the hudelem."
+    },
+    "y": {
+      "supported_games": ["t6"],
+      "permissions": ["read", "write"],
+      "default_value": "0.0f",
+      "value_type": "float",
+      "value_subtypes": ["float"],
+      "read_logic": {
+        "error_handling": [],
+        "behavior": "direct"
+      },
+      "write_logic": {
+        "error_handling": [],
+        "behavior": "direct"
+      },
+      "desc": "Reads, and writes to the hudelem's y coordinate on screen. Coordinates are relative to the vertical and horizontal alignments for the hudelem."
+    },
+    "z": {
+      "supported_games": ["t6"],
+      "permissions": ["read", "write"],
+      "default_value": "0.0f",
+      "value_type": "float",
+      "value_subtypes": ["float"],
+      "read_logic": {
+        "error_handling": [],
+        "behavior": "direct"
+      },
+      "write_logic": {
+        "error_handling": ["font scale was %g; should be > 0"],
+        "behavior": "Values greater than 4.2f are truncated to 4.2f"
+      },
+      "desc": "Reads, and writes to the hudelem's z coordinate on screen. Coordinates are relative to the vertical and horizontal alignments for the hudelem."
+    },
+    "fontscale": {
+      "supported_games": ["t6"],
+      "permissions": ["read", "write"],
+      "default_value": "1.0f",
+      "value_type": "float",
+      "value_subtypes": ["float"],
+      "read_logic": {
+        "error_handling": [],
+        "behavior": "direct"
+      },
+      "write_logic": {
+        "error_handling": ["font scale was %g; should be > 0"],
+        "behavior": "Values greater than 4.2f are truncated to 4.2f"
+      },
+      "desc": "Controls the size of the font for any kind of characters rendered by the hudelem."
+    },
+    "font": {
+		"supported_games": ["t6"],
+		"permissions": ["read", "write"],
+		"default_value": "default",
+		"value_type": "string",
+		"value_subtypes": ["enums:G_HE_FONTS"],
+		"read_logic": {
+		  "error_handling": [],
+		  "behavior": "direct"
+		},
+		"write_logic": {
+		  "error_handling": ["Must be one of enums:G_HE_FONTS"],
+		  "behavior": ""
+		},
+		"desc": "Controls the font used by the characters rendered by the hudelem."
+    },
+    "alignx": {
+		"supported_games": ["t6"],
+		"permissions": ["read", "write"],
+		"default_value": "center",
+		"value_type": "string",
+		"value_subtypes": ["enums:G_HE_ALIGNX"],
+		"read_logic": {
+		  "error_handling": [],
+		  "behavior": "direct"
+		},
+		"write_logic": {
+		  "error_handling": ["Must be one of enums:G_HE_ALIGNX"],
+		  "behavior": ""
+		},
+		"desc": "Controls the x alignment of the hudelem."
+    },
+    "aligny": {
+		"supported_games": ["t6"],
+		"permissions": ["read", "write"],
+		"default_value": "center",
+		"value_type": "string",
+		"value_subtypes": ["enums:G_HE_ALIGNY"],
+		"read_logic": {
+		  "error_handling": [],
+		  "behavior": "direct"
+		},
+		"write_logic": {
+		  "error_handling": ["Must be one of enums:G_HE_ALIGNY"],
+		  "behavior": ""
+		},
+		"desc": "Controls the y alignment of the hudelem."
+    },
+    "horzalign": {
+		"supported_games": ["t6"],
+		"permissions": ["read", "write"],
+		"default_value": "center",
+		"value_type": "string",
+		"value_subtypes": ["enums:G_HE_HORZALIGN"],
+		"read_logic": {
+		  "error_handling": [],
+		  "behavior": "direct"
+		},
+		"write_logic": {
+		  "error_handling": ["Must be one of enums:G_HE_HORZALIGN"],
+		  "behavior": ""
+		},
+		"desc": "Controls the horizontal alignment of the hudelem."
+    },
+    "vertalign": {
+		"supported_games": ["t6"],
+		"permissions": ["read", "write"],
+		"default_value": "center",
+		"value_type": "string",
+		"value_subtypes": ["enums:G_HE_VERTALIGN"],
+		"read_logic": {
+		  "error_handling": [],
+		  "behavior": "direct"
+		},
+		"write_logic": {
+		  "error_handling": ["Must be one of enums:G_HE_HORZALIGN"],
+		  "behavior": ""
+		},
+		"desc": "Controls the vertical alignment of the hudelem."
+    },
+    "color": {
+      "supported_games": ["t6"],
+      "permissions": ["read", "write"],
+      "default_value": "(1.0f, 1.0f, 1.0f)",
+      "value_type": "vector",
+      "value_subtypes": ["RGB as float"],
+      "read_logic": {
+        "error_handling": [],
+        "behavior": ""
+      },
+      "write_logic": {
+        "error_handling": [],
+        "behavior": "clamp to minimum of 0, maximum of 1"
+      },
+      "desc": "Controls the RGB color of the hudelem in the form of x/255."
+    },
+    "alpha": {
+      "supported_games": ["t6"],
+      "permissions": ["read", "write"],
+      "default_value": "1.0f",
+      "value_type": "vector",
+      "value_subtypes": ["alpha as float"],
+      "read_logic": {
+        "error_handling": [],
+        "behavior": ""
+      },
+      "write_logic": {
+        "error_handling": [],
+        "behavior": "clamp to minimum of 0, maximum of 1"
+      },
+      "desc": "Controls the transparency(alpha) of the hudelem in the form of x/255."
+    },
+    "label": {
+      "supported_games": ["t6"],
+      "permissions": ["read", "write"],
+      "default_value": "1.0f",
+      "value_type": "istring",
+      "value_subtypes": ["int"],
+      "read_logic": {
+        "error_handling": [],
+        "behavior": "returns the index the localized configstring is registered at"
+      },
+      "write_logic": {
+        "error_handling": [],
+        "behavior": "insert or assign a localized configstring to the hudelem based on the input"
+      },
+      "desc": "Controls the transparency(alpha) of the hudelem in the form of x/255."
+    },
+    "sort": {
+      "supported_games": ["t6"]
+    },
+    "foreground": {
+      "supported_games": ["t6"]
+    },
+    "hidewhendead": {
+      "supported_games": ["t6"]
+    },
+    "hidewheninkillcam": {
+      "supported_games": ["t6"]
+    },
+    "hidewhenindemo": {
+      "supported_games": ["t6"]
+    },
+    "immunetodemogamehudsettings": {
+      "supported_games": ["t6"]
+    },
+    "immunetodemofreecamera": {
+      "supported_games": ["t6"]
+    },
+    "hidewhileremotecontrolling": {
+      "supported_games": ["t6"]
+    },
+    "hidewheninmenu": {
+      "supported_games": ["t6"]
+    },
+    "hidewheninscope": {
+      "supported_games": ["t6"]
+    },
+    "fadewhentargeted": {
+      "supported_games": ["t6"]
+    },
+    "fontstyle3d": {
+      "supported_games": ["t6"]
+    },
+    "font3duseglowcolor": {
+      "supported_games": ["t6"]
+    },
+    "glowcolor": {
+      "supported_games": ["t6"]
+    },
+    "glowalpha": {
+      "supported_games": ["t6"]
+    },
+    "archived": {
+      "supported_games": ["t6"]
+    },
+    "ui3dwindow": {
+      "supported_games": ["t6"]
+    },
+    "showplayerteamhudelemtospectator": {
+      "supported_games": ["t6"]
+    }
+  }
+}

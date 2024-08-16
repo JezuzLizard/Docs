@@ -1,0 +1,14 @@
+{
+  "display_values": {
+    "supported_games": "Supported Games",
+    "game_names": {
+      "t6": "Black Ops 2(T6)"
+    },
+    "permissions": "Permissions",
+    "default_value": "Default Value",
+    "value_type": "Value Type",
+    "value_subtype": "Value Sub Type",
+    "read_logic": "Read Logic",
+    "write_logic": "Write Logic"
+  }
+}
