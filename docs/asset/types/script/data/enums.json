@@ -1,5 +1,7 @@
 {
-  "ENT_TYPES": [
+  "t6" :
+  {
+  "G_ENT_TYPES": [
     "general",
     "player",
     "player_corpse",
@@ -22,7 +24,7 @@
     "streamer_hint",
     "zbarrier"
   ],
-  "VAR_TYPES": [
+  "G_VAR_TYPES": [
     "undefined",
     "pointer",
     "string",
@@ -47,71 +49,90 @@
     "array",
     "dead_thread"
   ],
-	"G_HE_FONT" :
-	[
-	"default",
-	"bigfixed",
-	"smallfixed",
-	"objective",
-	"big",
-	"small",
-	"extrabig",
-	"extrasmall"
-	],
-	"G_HE_ALIGNX" : [ 
-		"left", 
-		"center", 
-		"right" 
-	],
-	"G_HE_ALIGNY" : [ 
-		"top", 
-		"middle", 
-		"bottom" 
-	],
-	"g_HE_HORZALIGN" : [
-	"subleft",
-	"left",
-	"center",
-	"right",
-	"fullscreen",
-	"noscale",
-	"alignto640",
-	"center_safearea",
-	"user_left",
-	"user_center",
-	"user_right"
-	],
-	"G_HE_VERTALIGN" : [
-	"subtop",
-	"top",
-	"middle",
-	"bottom",
-	"fullscreen",
-	"noscale",
-	"alignto480",
-	"center_safearea",
-	"user_top",
-	"user_center",
-	"user_bottom"
-	],
-  "G_HE_TYPE" : 
-[
-  "free",
-  "text",
-  "value",
-  "playername",
-  "mapname",
-  "gametype",
-  "damage_indicator",
-  "score",
-  "material",
-  "timer_down",
-  "timer_up",
-  "tenths_timer_down",
-  "tenths_timer_up",
-  "clock_down",
-  "clock_up",
-  "waypoint",
-  "perks"
-]
+  "G_HE_FONT": [
+    "default",
+    "bigfixed",
+    "smallfixed",
+    "objective",
+    "big",
+    "small",
+    "extrabig",
+    "extrasmall"
+  ],
+  "G_HE_ALIGNX": ["left", "center", "right"],
+  "G_HE_ALIGNY": ["top", "middle", "bottom"],
+  "G_HE_HORZALIGN": [
+    "subleft",
+    "left",
+    "center",
+    "right",
+    "fullscreen",
+    "noscale",
+    "alignto640",
+    "center_safearea",
+    "user_left",
+    "user_center",
+    "user_right"
+  ],
+  "G_HE_VERTALIGN": [
+    "subtop",
+    "top",
+    "middle",
+    "bottom",
+    "fullscreen",
+    "noscale",
+    "alignto480",
+    "center_safearea",
+    "user_top",
+    "user_center",
+    "user_bottom"
+  ],
+  "G_HE_TYPE": [
+    "free",
+    "text",
+    "value",
+    "playername",
+    "mapname",
+    "gametype",
+    "damage_indicator",
+    "score",
+    "material",
+    "timer_down",
+    "timer_up",
+    "tenths_timer_down",
+    "tenths_timer_up",
+    "clock_down",
+    "clock_up",
+    "waypoint",
+    "perks",
+    "all"
+  ],
+  "G_HE_TEXTSTYLE": [
+    "normal",
+    "shadowed",
+    "shadowedmore"
+  ],
+  "G_HE_FLAG": {
+    "FOREGROUND": "0x1",
+    "HIDEWHENDEAD": "0x2",
+    "HIDEWHENINMENU": "0x4",
+    "FONTSTYLE3D_SHADOWED": "0x8",
+    "FONTSTYLE3D_SHADOWED_MORE": "0x10",
+    "FONT3D_USE_GLOWCOLOR": "0x20",
+    "HIDEWHENINKILLCAM": "0x40",
+    "REDACT": "0x80",
+    "FADEWHENTARGETED": "0x100",
+    "HIDEWHENINDEMO": "0x200",
+    "HIDEWHILEREMOTECONTROLING": "0x400",
+    "COD7DECODE": "0x800",
+    "NO_OFFSCREEN_WAYPOINT": "0x1000",
+    "HIDEWHENINSCOPE": "0x2000",
+    "TYPEWRITER": "0x4000",
+    "IMMUNE_TO_DEMO_GAMEHUD_SETTINGS": "0x8000",
+    "IMMUNE_TO_DEMO_FREECAMERA": "0x10000",
+    "HUDELEMFLAG_DEBUG": "0x40000"
+  },
+  "G_SESSIONSTATE": ["playing", "dead", "spectator", "intermission"],
+  "G_DEMOSTATE": ["idle", "recording", "playing"]
+}
 }

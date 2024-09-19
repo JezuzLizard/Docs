@@ -1,15 +1,17 @@
 {
   "header": {
     "tags": ["gsc", "script", "fields", "hudelem"],
-    "desc": "./field-descriptions.md#script-hudelem-fields"
+    "general_desc": "./field-descriptions.md#script-hudelem-fields"
   },
   "body": {
     "x": {
-      "supported_games": ["t6"],
+      "supported_games": { "t6": ["mp", "sp", "zm"], "t5": ["mp", "sp"], "t4": ["mp", "sp"] },
       "permissions": ["read", "write"],
       "default_value": "0.0f",
       "value_type": "float",
       "value_subtypes": ["float"],
+      "supported_hudelem_types": ["enums:G_HE_TYPE:all"],
+      "affects_label": "true",
       "read_logic": {
         "error_handling": [],
         "behavior": "direct"
@@ -18,14 +20,22 @@
         "error_handling": [],
         "behavior": "direct"
       },
-      "desc": "Reads, and writes to the hudelem's x coordinate on screen. Coordinates are relative to the vertical and horizontal alignments for the hudelem."
+      "engine_value_modified": "structs:hudelem_s:x",
+      "sources": {
+        "t6": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "structs:hudelem_s"],
+        "t5": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "structs:hudelem_s"],
+        "t4": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "structs:hudelem_s"]
+      },
+      "general_desc": "Reads, and writes to the hudelem's x coordinate on screen. Coordinates are relative to the vertical and horizontal alignments for the hudelem(CITATION NEEDED)."
     },
     "y": {
-      "supported_games": ["t6"],
+      "supported_games": { "t6": ["mp", "sp", "zm"], "t5": ["mp", "sp"], "t4": ["mp", "sp"] },
       "permissions": ["read", "write"],
       "default_value": "0.0f",
       "value_type": "float",
       "value_subtypes": ["float"],
+      "supported_hudelem_types": ["enums:G_HE_TYPE:all"],
+      "affects_label": "true",
       "read_logic": {
         "error_handling": [],
         "behavior": "direct"
@@ -34,30 +44,61 @@
         "error_handling": [],
         "behavior": "direct"
       },
-      "desc": "Reads, and writes to the hudelem's y coordinate on screen. Coordinates are relative to the vertical and horizontal alignments for the hudelem."
+      "engine_value_modified": "structs:hudelem_s:y",
+      "sources": {
+        "t6": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "structs:hudelem_s"],
+        "t5": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "structs:hudelem_s"],
+        "t4": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "structs:hudelem_s"]
+      },
+      "general_desc": "Reads, and writes to the hudelem's y coordinate on screen. Coordinates are relative to the vertical and horizontal alignments for the hudelem(CITATION NEEDED)."
     },
     "z": {
-      "supported_games": ["t6"],
+      "supported_games": { "t6": ["mp", "sp", "zm"], "t5": ["mp", "sp"], "t4": ["mp", "sp"] },
       "permissions": ["read", "write"],
       "default_value": "0.0f",
       "value_type": "float",
       "value_subtypes": ["float"],
+      "supported_hudelem_types": ["enums:G_HE_TYPE:all"],
+      "affects_label": "true",
       "read_logic": {
         "error_handling": [],
         "behavior": "direct"
       },
       "write_logic": {
-        "error_handling": ["font scale was %g; should be > 0"],
-        "behavior": "Values greater than 4.2f are truncated to 4.2f"
+        "error_handling": [],
+        "behavior": "direct"
       },
-      "desc": "Reads, and writes to the hudelem's z coordinate on screen. Coordinates are relative to the vertical and horizontal alignments for the hudelem."
+      "engine_value_modified": "structs:hudelem_s:z",
+      "sources": {
+        "t6": [
+          "HudElem_SetDefaults",
+          "GScr_AddFieldsForHudElems",
+          "DrawOffscreenViewableWaypoint", 
+          "structs:hudelem_s"
+        ],
+        "t5": [
+          "HudElem_SetDefaults",
+          "GScr_AddFieldsForHudElems",
+          "DrawOffscreenViewableWaypoint", 
+          "structs:hudelem_s"
+        ],
+        "t4": [
+          "HudElem_SetDefaults",
+          "GScr_AddFieldsForHudElems",
+          "DrawOffscreenViewableWaypoint", 
+          "structs:hudelem_s"
+        ]
+      },
+      "general_desc": "Reads, and writes to the hudelem's z coordinate on screen. Only known to be read by waypoint hudelems."
     },
     "fontscale": {
-      "supported_games": ["t6"],
+      "supported_games": { "t6": ["mp", "sp", "zm"], "t5": ["mp", "sp"], "t4": ["mp", "sp"] },
       "permissions": ["read", "write"],
       "default_value": "1.0f",
       "value_type": "float",
       "value_subtypes": ["float"],
+      "supported_hudelem_types": ["enums:G_HE_TYPE:text", "enums:G_HE_TYPE:value", "enums:G_HE_TYPE:playername", "enums:G_HE_TYPE:mapname", "enums:G_HE_TYPE:gametype", "enums:G_HE_TYPE:timer_down", "enums:G_HE_TYPE:timer_up", "enums:G_HE_TYPE:tenths_timer_down", "enums:G_HE_TYPE:tenths_timer_up", "enums:G_HE_TYPE:perks"],
+      "affects_label": "true",
       "read_logic": {
         "error_handling": [],
         "behavior": "direct"
@@ -66,94 +107,142 @@
         "error_handling": ["font scale was %g; should be > 0"],
         "behavior": "Values greater than 4.2f are truncated to 4.2f"
       },
-      "desc": "Controls the size of the font for any kind of characters rendered by the hudelem."
+      "engine_value_modified": "structs:hudelem_s:fontScale",
+      "sources": {
+        "t6": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "GetHudElemInfo", "HECmd_ChangeFontScaleOverTime", "HudElem_SetFontScale", "DrawHudElemString", "structs:hudelem_s"],
+        "t5": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "GetHudElemInfo", "HECmd_ChangeFontScaleOverTime", "HudElem_SetFontScale", "DrawHudElemString", "structs:hudelem_s"],
+        "t4": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "GetHudElemInfo", "HECmd_ChangeFontScaleOverTime", "HudElem_SetFontScale", "DrawHudElemString", "structs:hudelem_s"]
+      },
+      "general_desc": "Controls the size of the font for any kind of characters rendered by the hudelem."
     },
     "font": {
-		"supported_games": ["t6"],
-		"permissions": ["read", "write"],
-		"default_value": "default",
-		"value_type": "string",
-		"value_subtypes": ["enums:G_HE_FONTS"],
-		"read_logic": {
-		  "error_handling": [],
-		  "behavior": "direct"
-		},
-		"write_logic": {
-		  "error_handling": ["Must be one of enums:G_HE_FONTS"],
-		  "behavior": ""
-		},
-		"desc": "Controls the font used by the characters rendered by the hudelem."
+      "supported_games": { "t6": ["mp", "sp", "zm"], "t5": ["mp", "sp"], "t4": ["mp", "sp"] },
+      "permissions": ["read", "write"],
+      "default_value": "default",
+      "value_type": "string",
+      "value_subtypes": ["enums:G_HE_FONTS"],
+      "supported_hudelem_types": ["enums:G_HE_TYPE:text", "enums:G_HE_TYPE:value", "enums:G_HE_TYPE:playername", "enums:G_HE_TYPE:mapname", "enums:G_HE_TYPE:gametype", "enums:G_HE_TYPE:timer_down", "enums:G_HE_TYPE:timer_up", "enums:G_HE_TYPE:tenths_timer_down", "enums:G_HE_TYPE:tenths_timer_up", "enums:G_HE_TYPE:perks"],
+      "affects_label": "true",
+      "read_logic": {
+        "error_handling": [],
+        "behavior": "direct"
+      },
+      "write_logic": {
+        "error_handling": ["Must be one of enums:G_HE_FONTS"],
+        "behavior": ""
+      },
+      "engine_value_modified": "structs:hudelem_s:font",
+      "sources": {
+        "t6": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "GetHudElemInfo", "HudElem_SetFont", "HudElem_GetFont", "structs:hudelem_s"],
+        "t5": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "GetHudElemInfo", "HudElem_SetFont", "HudElem_GetFont", "structs:hudelem_s"],
+        "t4": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "GetHudElemInfo", "HudElem_SetFont", "HudElem_GetFont", "structs:hudelem_s"]
+      },
+      "general_desc": "Controls the font used by the characters rendered by the hudelem."
     },
     "alignx": {
-		"supported_games": ["t6"],
-		"permissions": ["read", "write"],
-		"default_value": "center",
-		"value_type": "string",
-		"value_subtypes": ["enums:G_HE_ALIGNX"],
-		"read_logic": {
-		  "error_handling": [],
-		  "behavior": "direct"
-		},
-		"write_logic": {
-		  "error_handling": ["Must be one of enums:G_HE_ALIGNX"],
-		  "behavior": ""
-		},
-		"desc": "Controls the x alignment of the hudelem."
+      "supported_games": { "t6": ["mp", "sp", "zm"], "t5": ["mp", "sp"], "t4": ["mp", "sp"] },
+      "permissions": ["read", "write"],
+      "default_value": "center",
+      "value_type": "string",
+      "value_subtypes": ["enums:G_HE_ALIGNX"],
+      "supported_hudelem_types": ["enums:G_HE_TYPE:all"],
+      "affects_label": "true",
+      "read_logic": {
+        "error_handling": [],
+        "behavior": "direct"
+      },
+      "write_logic": {
+        "error_handling": ["Must be one of enums:G_HE_ALIGNX"],
+        "behavior": ""
+      },
+      "engine_value_modified": "",
+      "sources": {
+        "t6": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "GetHudElemInfo", "SetHudElemPos", "HudElem_SetAlignX", "HudElem_GetAlignX", "structs:hudelem_s"],
+        "t5": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "GetHudElemInfo", "SetHudElemPos", "HudElem_SetAlignX", "HudElem_GetAlignX", "structs:hudelem_s"],
+        "t4": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "GetHudElemInfo", "SetHudElemPos", "HudElem_SetAlignX", "HudElem_GetAlignX", "structs:hudelem_s"]
+      },
+      "general_desc": "Controls the x alignment of the hudelem."
     },
     "aligny": {
-		"supported_games": ["t6"],
-		"permissions": ["read", "write"],
-		"default_value": "center",
-		"value_type": "string",
-		"value_subtypes": ["enums:G_HE_ALIGNY"],
-		"read_logic": {
-		  "error_handling": [],
-		  "behavior": "direct"
-		},
-		"write_logic": {
-		  "error_handling": ["Must be one of enums:G_HE_ALIGNY"],
-		  "behavior": ""
-		},
-		"desc": "Controls the y alignment of the hudelem."
+      "supported_games": { "t6": ["mp", "sp", "zm"], "t5": ["mp", "sp"], "t4": ["mp", "sp"] },
+      "permissions": ["read", "write"],
+      "default_value": "center",
+      "value_type": "string",
+      "value_subtypes": ["enums:G_HE_ALIGNY"],
+      "supported_hudelem_types": ["enums:G_HE_TYPE:all"],
+      "affects_label": "true",
+      "read_logic": {
+        "error_handling": [],
+        "behavior": "direct"
+      },
+      "write_logic": {
+        "error_handling": ["Must be one of enums:G_HE_ALIGNY"],
+        "behavior": ""
+      },
+      "engine_value_modified": "",
+      "sources": {
+        "t6": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "GetHudElemInfo", "SetHudElemPos", "HudElem_SetAlignY", "HudElem_GetAlignY", "structs:hudelem_s"],
+        "t5": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "GetHudElemInfo", "SetHudElemPos", "HudElem_SetAlignY", "HudElem_GetAlignY", "structs:hudelem_s"],
+        "t4": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "GetHudElemInfo", "SetHudElemPos", "HudElem_SetAlignY", "HudElem_GetAlignY", "structs:hudelem_s"]
+      },
+      "general_desc": "Controls the y alignment of the hudelem."
     },
     "horzalign": {
-		"supported_games": ["t6"],
-		"permissions": ["read", "write"],
-		"default_value": "center",
-		"value_type": "string",
-		"value_subtypes": ["enums:G_HE_HORZALIGN"],
-		"read_logic": {
-		  "error_handling": [],
-		  "behavior": "direct"
-		},
-		"write_logic": {
-		  "error_handling": ["Must be one of enums:G_HE_HORZALIGN"],
-		  "behavior": ""
-		},
-		"desc": "Controls the horizontal alignment of the hudelem."
+      "supported_games": { "t6": ["mp", "sp", "zm"], "t5": ["mp", "sp"], "t4": ["mp", "sp"] },
+      "permissions": ["read", "write"],
+      "default_value": "center",
+      "value_type": "string",
+      "value_subtypes": ["enums:G_HE_HORZALIGN"],
+      "supported_hudelem_types": ["enums:G_HE_TYPE:all"],
+      "affects_label": "true",
+      "read_logic": {
+        "error_handling": [],
+        "behavior": "direct"
+      },
+      "write_logic": {
+        "error_handling": ["Must be one of enums:G_HE_HORZALIGN"],
+        "behavior": ""
+      },
+      "engine_value_modified": "",
+      "sources": {
+        "t6": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "GetHudElemInfo", "SetHudElemPos", "HudElem_SetHorzAlign", "HudElem_GetHorzAlign", "structs:hudelem_s"],
+        "t5": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "GetHudElemInfo", "SetHudElemPos", "HudElem_SetHorzAlign", "HudElem_GetHorzAlign", "structs:hudelem_s"],
+        "t4": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "GetHudElemInfo", "SetHudElemPos", "HudElem_SetHorzAlign", "HudElem_GetHorzAlign", "structs:hudelem_s"]
+      },
+      "general_desc": "Controls the horizontal alignment of the hudelem."
     },
     "vertalign": {
-		"supported_games": ["t6"],
-		"permissions": ["read", "write"],
-		"default_value": "center",
-		"value_type": "string",
-		"value_subtypes": ["enums:G_HE_VERTALIGN"],
-		"read_logic": {
-		  "error_handling": [],
-		  "behavior": "direct"
-		},
-		"write_logic": {
-		  "error_handling": ["Must be one of enums:G_HE_HORZALIGN"],
-		  "behavior": ""
-		},
-		"desc": "Controls the vertical alignment of the hudelem."
+      "supported_games": { "t6": ["mp", "sp", "zm"], "t5": ["mp", "sp"], "t4": ["mp", "sp"] },
+      "permissions": ["read", "write"],
+      "default_value": "center",
+      "value_type": "string",
+      "value_subtypes": ["enums:G_HE_VERTALIGN"],
+      "supported_hudelem_types": ["enums:G_HE_TYPE:all"],
+      "affects_label": "true",
+      "read_logic": {
+        "error_handling": [],
+        "behavior": "direct"
+      },
+      "write_logic": {
+        "error_handling": ["Must be one of enums:G_HE_HORZALIGN"],
+        "behavior": ""
+      },
+      "engine_value_modified": "",
+      "sources": {
+        "t6": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "GetHudElemInfo", "SetHudElemPos", "HudElem_SetVertAlign", "HudElem_GetVertAlign", "structs:hudelem_s"],
+        "t5": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "GetHudElemInfo", "SetHudElemPos", "HudElem_SetVertAlign", "HudElem_GetVertAlign", "structs:hudelem_s"],
+        "t4": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "GetHudElemInfo", "SetHudElemPos", "HudElem_SetVertAlign", "HudElem_GetVertAlign", "structs:hudelem_s"]
+      },
+      "general_desc": "Controls the vertical alignment of the hudelem."
     },
     "color": {
-      "supported_games": ["t6"],
+      "supported_games": { "t6": ["mp", "sp", "zm"], "t5": ["mp", "sp"], "t4": ["mp", "sp"] },
       "permissions": ["read", "write"],
       "default_value": "(1.0f, 1.0f, 1.0f)",
       "value_type": "vector",
-      "value_subtypes": ["RGB as float"],
+      "value_subtypes": ["RGB as 3 floats"],
+      "supported_hudelem_types": ["enums:G_HE_TYPE:all"],
+      "affects_label": "true",
       "read_logic": {
         "error_handling": [],
         "behavior": ""
@@ -162,14 +251,22 @@
         "error_handling": [],
         "behavior": "clamp to minimum of 0, maximum of 1"
       },
-      "desc": "Controls the RGB color of the hudelem in the form of x/255."
+      "engine_value_modified": "structs:hudelem_s:color",
+      "sources": {
+        "t6": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "BG_LerpHudColors", "HudElem_SetColor", "HudElem_GetColor", "structs:hudelem_s"],
+        "t5": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "BG_LerpHudColors", "HudElem_SetColor", "HudElem_GetColor", "structs:hudelem_s"],
+        "t4": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "BG_LerpHudColors", "HudElem_SetColor", "HudElem_GetColor", "structs:hudelem_s"]
+      },
+      "general_desc": "Controls the RGB color of the hudelem in the form of x/255."
     },
     "alpha": {
-      "supported_games": ["t6"],
+      "supported_games": { "t6": ["mp", "sp", "zm"], "t5": ["mp", "sp"], "t4": ["mp", "sp"] },
       "permissions": ["read", "write"],
       "default_value": "1.0f",
-      "value_type": "vector",
+      "value_type": "float",
       "value_subtypes": ["alpha as float"],
+      "supported_hudelem_types": ["enums:G_HE_TYPE:all"],
+      "affects_label": "true",
       "read_logic": {
         "error_handling": [],
         "behavior": ""
@@ -178,14 +275,22 @@
         "error_handling": [],
         "behavior": "clamp to minimum of 0, maximum of 1"
       },
-      "desc": "Controls the transparency(alpha) of the hudelem in the form of x/255."
+      "engine_value_modified": "structs:hudelem_s:color",
+      "sources": {
+        "t6": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "BG_LerpHudColors", "HudElem_SetAlpha", "HudElem_GetAlpha", "structs:hudelem_s"],
+        "t5": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "BG_LerpHudColors", "HudElem_SetAlpha", "HudElem_GetAlpha", "structs:hudelem_s"],
+        "t4": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "BG_LerpHudColors", "HudElem_SetAlpha", "HudElem_GetAlpha", "structs:hudelem_s"]
+      },
+      "general_desc": "Controls the transparency(alpha) of the hudelem in the form of x/255."
     },
     "label": {
-      "supported_games": ["t6"],
+      "supported_games": { "t6": ["mp", "sp", "zm"], "t5": ["mp", "sp"], "t4": ["mp", "sp"] },
       "permissions": ["read", "write"],
       "default_value": "1.0f",
       "value_type": "istring",
       "value_subtypes": ["int"],
+      "supported_hudelem_types": ["enums:G_HE_TYPE:all"],
+      "affects_label": "true",
       "read_logic": {
         "error_handling": [],
         "behavior": "returns the index the localized configstring is registered at"
@@ -194,61 +299,409 @@
         "error_handling": [],
         "behavior": "insert or assign a localized configstring to the hudelem based on the input"
       },
-      "desc": "Controls the transparency(alpha) of the hudelem in the form of x/255."
+      "engine_value_modified": "structs:hudelem_s:label",
+      "sources": {
+        "t6": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "GetHudElemInfo", "HudElem_SetLocalizedString", "structs:hudelem_s", "structs:cg_hudelem_t"],
+        "t5": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "GetHudElemInfo", "HudElem_SetLocalizedString", "structs:hudelem_s", "structs:cg_hudelem_t"],
+        "t4": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "GetHudElemInfo", "HudElem_SetLocalizedString", "structs:hudelem_s", "structs:cg_hudelem_t"]
+      },
+      "general_desc": "A special string that does not change the type of the hudelem like settext does. This allows for hudelems of different types such as value, or timer to have a text string attached to them. The client will truncate the string to 255 characters + the null character."
     },
     "sort": {
-      "supported_games": ["t6"]
+      "supported_games": { "t6": ["mp", "sp", "zm"], "t5": ["mp", "sp"], "t4": ["mp", "sp"] },
+      "permissions": ["read", "write"],
+      "default_value": "0.0f",
+      "value_type": "float",
+      "value_subtypes": ["float"],
+      "supported_hudelem_types": ["enums:G_HE_TYPE:all"],
+      "affects_label": "true",
+      "read_logic": {
+        "error_handling": [],
+        "behavior": ""
+      },
+      "write_logic": {
+        "error_handling": [],
+        "behavior": ""
+      },
+      "engine_value_modified": "structs:hudelem_s:sort",
+      "sources": {
+        "t6": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "GetSortedHudElems", "compare_hudelems", "structs:hudelem_s"],
+        "t5": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "GetSortedHudElems", "compare_hudelems", "structs:hudelem_s"],
+        "t4": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "GetSortedHudElems", "compare_hudelems", "structs:hudelem_s"]
+      },
+      "general_desc": "Controls the order of which overlapping hudelems should appear compared to the other hudelems sort values."
     },
     "foreground": {
-      "supported_games": ["t6"]
+      "supported_games": { "t6": ["mp", "sp", "zm"], "t5": ["mp", "sp"], "t4": ["mp", "sp"] },
+      "permissions": ["read", "write"],
+      "default_value": "0",
+      "value_type": "int",
+      "value_subtypes": ["bool", "enums:G_HE_FLAG:FOREGROUND"],
+      "supported_hudelem_types": ["enums:G_HE_TYPE:all"],
+      "affects_label": "true",
+      "read_logic": {
+        "error_handling": [],
+        "behavior": ""
+      },
+      "write_logic": {
+        "error_handling": [],
+        "behavior": ""
+      },
+      "engine_value_modified": "structs:hudelem_s:flags",
+      "sources": {
+        "t6": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "CG_Draw2dHudElemList", "structs:hudelem_s"],
+        "t5": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "CG_Draw2dHudElemList", "structs:hudelem_s"],
+        "t4": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "CG_Draw2dHudElemList", "structs:hudelem_s"]
+      },
+      "general_desc": "Flag which controls whether the hudelem should always appear at the top of the hudelem sort stack. Hudelems with the enums:G_HE_FLAG:FOREGROUND are drawn in a separate call than hudelems without the flag."
     },
     "hidewhendead": {
-      "supported_games": ["t6"]
+      "supported_games": { "t6": ["mp", "sp", "zm"], "t5": ["mp", "sp"], "t4": ["mp", "sp"] },
+      "permissions": ["read", "write"],
+      "default_value": "0",
+      "value_type": "int",
+      "value_subtypes": ["bool", "enums:G_HE_FLAG:HIDEWHENDEAD"],
+      "supported_hudelem_types": ["enums:G_HE_TYPE:all"],
+      "affects_label": "true",
+      "read_logic": {
+        "error_handling": [],
+        "behavior": ""
+      },
+      "write_logic": {
+        "error_handling": [],
+        "behavior": ""
+      },
+      "engine_value_modified": "structs:hudelem_s:flags",
+      "sources": {
+        "t6": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "HudElem_SetFlagHideWhenDead", "HudElem_GetFlagHideWhenDead", "CG_Draw2dHudElems", "CG_Draw2dHudElemList", "structs:hudelem_s"],
+        "t5": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "HudElem_SetFlagHideWhenDead", "HudElem_GetFlagHideWhenDead", "CG_Draw2dHudElems", "CG_Draw2dHudElemList", "structs:hudelem_s"],
+        "t4": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "HudElem_SetFlagHideWhenDead", "HudElem_GetFlagHideWhenDead", "CG_Draw2dHudElems", "CG_Draw2dHudElemList", "structs:hudelem_s"]
+      },
+      "general_desc": "Flag which controls whether the hudelem should be visible when the client is enums:G_SESSIONSTATE:dead."
     },
     "hidewheninkillcam": {
-      "supported_games": ["t6"]
+      "supported_games": { "t6": ["mp", "zm"], "t5": ["mp"], "t4": ["mp"] },
+      "permissions": ["read", "write"],
+      "default_value": "0",
+      "value_type": "int",
+      "value_subtypes": ["bool", "enums:G_HE_FLAG:HIDEWHENINKILLCAM"],
+      "supported_hudelem_types": ["enums:G_HE_TYPE:all"],
+      "affects_label": "true",
+      "read_logic": {
+        "error_handling": [],
+        "behavior": ""
+      },
+      "write_logic": {
+        "error_handling": [],
+        "behavior": ""
+      },
+      "engine_value_modified": "structs:hudelem_s:flags",
+      "sources": {
+        "t6": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "HudElem_SetFlagHideWhenInKillCam", "HudElem_GetFlagHideWhenInKillCam", "CG_Draw2dHudElems", "CG_Draw2dHudElemList", "structs:hudelem_s"],
+        "t5": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "HudElem_SetFlagHideWhenInKillCam", "HudElem_GetFlagHideWhenInKillCam", "CG_Draw2dHudElems", "CG_Draw2dHudElemList", "structs:hudelem_s"],
+        "t4": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "HudElem_SetFlagHideWhenInKillCam", "HudElem_GetFlagHideWhenInKillCam", "CG_Draw2dHudElems", "CG_Draw2dHudElemList", "structs:hudelem_s"]
+      },
+      "general_desc": "Flag which controls whether the hudelem should be visible when the client is watching a killcam."
     },
     "hidewhenindemo": {
-      "supported_games": ["t6"]
+      "supported_games": { "t6": ["mp", "zm"], "t5": ["mp"], "t4": ["mp"] },
+      "permissions": ["read", "write"],
+      "default_value": "0",
+      "value_type": "int",
+      "value_subtypes": ["bool", "enums:G_HE_FLAG:HIDEWHENINDEMO"],
+      "supported_hudelem_types": ["enums:G_HE_TYPE:all"],
+      "affects_label": "true",
+      "read_logic": {
+        "error_handling": [],
+        "behavior": ""
+      },
+      "write_logic": {
+        "error_handling": [],
+        "behavior": ""
+      },
+      "engine_value_modified": "structs:hudelem_s:flags",
+      "sources": {
+        "t6": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "HudElem_SetFlagHideWhenInKillCam", "HudElem_GetFlagHideWhenInKillCam", "CG_Draw2dHudElemList", "structs:hudelem_s"],
+        "t5": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "HudElem_SetFlagHideWhenInKillCam", "HudElem_GetFlagHideWhenInKillCam", "CG_Draw2dHudElemList", "structs:hudelem_s"],
+        "t4": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "HudElem_SetFlagHideWhenInKillCam", "HudElem_GetFlagHideWhenInKillCam", "CG_Draw2dHudElemList", "structs:hudelem_s"]
+      },
+      "general_desc": "Flag which controls whether the hudelem should be visible when the client is enums:G_DEMOSTATE:playing."
     },
     "immunetodemogamehudsettings": {
-      "supported_games": ["t6"]
+      "supported_games": { "t6": ["mp", "sp", "zm"], "t5": ["mp", "sp"], "t4": ["mp", "sp"] },
+      "permissions": ["read", "write"],
+      "default_value": "0",
+      "value_type": "int",
+      "value_subtypes": [
+        "bool",
+        "enums:G_HE_FLAG:IMMUNE_TO_DEMO_GAMEHUD_SETTINGS"
+      ],
+      "supported_hudelem_types": ["enums:G_HE_TYPE:all"],
+      "affects_label": "true",
+      "read_logic": {
+        "error_handling": [],
+        "behavior": ""
+      },
+      "write_logic": {
+        "error_handling": [],
+        "behavior": ""
+      },
+      "engine_value_modified": "structs:hudelem_s:flags",
+      "sources": {
+        "t6": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "HudElem_SetFlagHideWhenInKillCam", "HudElem_GetFlagHideWhenInKillCam", "CG_Draw2dHudElemList", "Demo_ShouldFilterHudElement", "structs:hudelem_s"],
+        "t5": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "HudElem_SetFlagHideWhenInKillCam", "HudElem_GetFlagHideWhenInKillCam", "CG_Draw2dHudElemList", "Demo_ShouldFilterHudElement", "structs:hudelem_s"],
+        "t4": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "HudElem_SetFlagHideWhenInKillCam", "HudElem_GetFlagHideWhenInKillCam", "CG_Draw2dHudElemList", "Demo_ShouldFilterHudElement", "structs:hudelem_s"]
+      },
+      "general_desc": ""
     },
     "immunetodemofreecamera": {
-      "supported_games": ["t6"]
+      "supported_games": { "t6": ["mp", "zm"], "t5": ["mp"]},
+      "permissions": ["read", "write"],
+      "default_value": "0",
+      "value_type": "int",
+      "value_subtypes": ["bool", "enums:G_HE_FLAG:IMMUNE_TO_DEMO_FREECAMERA"],
+      "supported_hudelem_types": ["enums:G_HE_TYPE:all"],
+      "affects_label": "true",
+      "read_logic": {
+        "error_handling": [],
+        "behavior": ""
+      },
+      "write_logic": {
+        "error_handling": [],
+        "behavior": ""
+      },
+      "engine_value_modified": "structs:hudelem_s:flags",
+      "sources": {
+        "t6": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "HudElem_SetFlagImmuneToDemoFreeCamera", "HudElem_GetFlagImmuneToDemoFreeCamera", "CG_Draw2dHudElemList", "Demo_ShouldFilterHudElement", "structs:hudelem_s"],
+        "t5": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "HudElem_SetFlagImmuneToDemoFreeCamera", "HudElem_GetFlagImmuneToDemoFreeCamera", "CG_Draw2dHudElemList", "Demo_ShouldFilterHudElement", "structs:hudelem_s"],
+        "t4": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "HudElem_SetFlagImmuneToDemoFreeCamera", "HudElem_GetFlagImmuneToDemoFreeCamera", "CG_Draw2dHudElemList", "Demo_ShouldFilterHudElement", "structs:hudelem_s"]
+      },
+      "general_desc": ""
     },
     "hidewhileremotecontrolling": {
-      "supported_games": ["t6"]
+      "supported_games": { "t6": ["mp", "sp", "zm"], "t5": ["mp", "sp"], "t4": ["mp", "sp"] },
+      "permissions": ["read", "write"],
+      "default_value": "0",
+      "value_type": "int",
+      "value_subtypes": ["bool", "enums:G_HE_FLAG:HIDEWHILEREMOTECONTROLING"],
+      "supported_hudelem_types": ["enums:G_HE_TYPE:all"],
+      "affects_label": "true",
+      "read_logic": {
+        "error_handling": [],
+        "behavior": ""
+      },
+      "write_logic": {
+        "error_handling": [],
+        "behavior": ""
+      },
+      "engine_value_modified": "structs:hudelem_s:flags",
+      "sources": {
+        "t6": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "HudElem_SetFlagHideWhileRemoteControlling", "HudElem_GetFlagHideWhileRemoteControlling", "CG_Draw2dHudElemList", "structs:hudelem_s"],
+        "t5": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "HudElem_SetFlagHideWhileRemoteControlling", "HudElem_GetFlagHideWhileRemoteControlling", "CG_Draw2dHudElemList", "structs:hudelem_s"],
+        "t4": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "HudElem_SetFlagHideWhileRemoteControlling", "HudElem_GetFlagHideWhileRemoteControlling", "CG_Draw2dHudElemList", "structs:hudelem_s"]
+      },
+      "general_desc": "Controls whether the hudelem is visible while the client is remotely controlling a killstreak."
     },
     "hidewheninmenu": {
-      "supported_games": ["t6"]
+      "supported_games": { "t6": ["mp", "sp", "zm"], "t5": ["mp", "sp"], "t4": ["mp", "sp"] },
+      "permissions": ["read", "write"],
+      "default_value": "0",
+      "value_type": "int",
+      "value_subtypes": ["bool", "enums:G_HE_FLAG:HIDEWHENINMENU"],
+      "supported_hudelem_types": ["enums:G_HE_TYPE:all"],
+      "affects_label": "true",
+      "read_logic": {
+        "error_handling": [],
+        "behavior": ""
+      },
+      "write_logic": {
+        "error_handling": [],
+        "behavior": ""
+      },
+      "engine_value_modified": "structs:hudelem_s:flags",
+      "sources": {
+        "t6": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "HudElem_SetFlagHideWhenInMenu", "HudElem_GetFlagHideWhenInMenu", "CG_Draw2dHudElemList", "structs:hudelem_s"],
+        "t5": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "HudElem_SetFlagHideWhenInMenu", "HudElem_GetFlagHideWhenInMenu", "CG_Draw2dHudElemList", "structs:hudelem_s"],
+        "t4": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "HudElem_SetFlagHideWhenInMenu", "HudElem_GetFlagHideWhenInMenu", "CG_Draw2dHudElemList", "structs:hudelem_s"]
+      },
+      "general_desc": "Controls whether the hudelem is visible while the client is in a LUI, or quake menu context such as the ingame menu opened with the ESC key."
     },
     "hidewheninscope": {
-      "supported_games": ["t6"]
+      "supported_games": { "t6": ["mp", "sp", "zm"], "t5": ["mp", "sp"], "t4": ["mp", "sp"] },
+      "permissions": ["read", "write"],
+      "default_value": "0",
+      "value_type": "int",
+      "value_subtypes": ["bool", "enums:G_HE_FLAG:HIDEWHENINSCOPE"],
+      "supported_hudelem_types": ["enums:G_HE_TYPE:all"],
+      "affects_label": "true",
+      "read_logic": {
+        "error_handling": [],
+        "behavior": ""
+      },
+      "write_logic": {
+        "error_handling": [],
+        "behavior": ""
+      },
+      "engine_value_modified": "structs:hudelem_s:flags",
+      "sources": {
+        "t6": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "HudElem_SetFlagHideWhenInScope", "HudElem_GetFlagHideWhenInScope", "CG_Draw2dHudElemList", "structs:hudelem_s"],
+        "t5": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "HudElem_SetFlagHideWhenInScope", "HudElem_GetFlagHideWhenInScope", "CG_Draw2dHudElemList", "structs:hudelem_s"],
+        "t4": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "HudElem_SetFlagHideWhenInScope", "HudElem_GetFlagHideWhenInScope", "CG_Draw2dHudElemList", "structs:hudelem_s"]
+      },
+      "general_desc": "Controls whether the hudelem is visible while the client is viewing a scope overlay."
     },
     "fadewhentargeted": {
-      "supported_games": ["t6"]
+      "supported_games": { "t6": ["mp", "sp", "zm"], "t5": ["mp", "sp"], "t4": ["mp", "sp"] },
+      "permissions": ["read", "write"],
+      "default_value": "0",
+      "value_type": "int",
+      "value_subtypes": ["bool", "enums:G_HE_FLAG:FADEWHENTARGETED"],
+      "supported_hudelem_types": ["enums:G_HE_TYPE:all"],
+      "affects_label": "true",
+      "read_logic": {
+        "error_handling": [],
+        "behavior": ""
+      },
+      "write_logic": {
+        "error_handling": [],
+        "behavior": ""
+      },
+      "engine_value_modified": "structs:hudelem_s:flags",
+      "sources": {
+        "t6": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "structs:hudelem_s"],
+        "t5": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "structs:hudelem_s"],
+        "t4": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "structs:hudelem_s"]
+      },
+      "general_desc": "Controls whether the hudelem is visible while the client is targeting a targetable entity with a targeting weapon."
     },
     "fontstyle3d": {
-      "supported_games": ["t6"]
+      "supported_games": { "t6": ["mp", "sp", "zm"], "t5": ["mp", "sp"], "t4": ["mp", "sp"] },
+      "permissions": ["read", "write"],
+      "default_value": "normal",
+      "value_type": "string",
+      "value_subtypes": ["enums:G_HE_TEXTSTYLE"],
+      "supported_hudelem_types": ["enums:G_HE_TYPE:text", "enums:G_HE_TYPE:value", "enums:G_HE_TYPE:playername", "enums:G_HE_TYPE:mapname", "enums:G_HE_TYPE:gametype", "enums:G_HE_TYPE:timer_down", "enums:G_HE_TYPE:timer_up", "enums:G_HE_TYPE:tenths_timer_down", "enums:G_HE_TYPE:tenths_timer_up"],
+      "affects_label": "true",
+      "read_logic": {
+        "error_handling": [],
+        "behavior": ""
+      },
+      "write_logic": {
+        "error_handling": ["unknown text style '%s', should be normal, shadowed, or shadowedmore"],
+        "behavior": ""
+      },
+      "engine_value_modified": "structs:hudelem_s:flags",
+      "sources": {
+        "t6": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "HudElem_SetFontStyle3d", "HudElem_GetFontStyle3d", "DrawHudElemString", "structs:hudelem_s"],
+        "t5": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "HudElem_SetFontStyle3d", "HudElem_GetFontStyle3d", "DrawHudElemString", "structs:hudelem_s"],
+        "t4": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "HudElem_SetFontStyle3d", "HudElem_GetFontStyle3d", "DrawHudElemString", "structs:hudelem_s"]
+      },
+      "game_specific_desc": { "t6": {"mp": "Unsupported in engine.", "sp": "", "zm": "Unsupported in engine."}, "t5": {"mp": "", "sp": ""}, "t4": {"mp": "", "sp": ""} },
+      "general_desc": "Allows the hudelem text to be displayed in different styles."
     },
     "font3duseglowcolor": {
-      "supported_games": ["t6"]
+      "supported_games": { "t6": ["mp", "sp", "zm"], "t5": ["mp", "sp"], "t4": ["mp", "sp"] },
+      "permissions": ["read", "write"],
+      "default_value": "0",
+      "value_type": "int",
+      "value_subtypes": ["bool", "enums:G_HE_FLAG:FONT3D_USE_GLOWCOLOR"],
+      "supported_hudelem_types": ["enums:G_HE_TYPE:text", "enums:G_HE_TYPE:value", "enums:G_HE_TYPE:playername", "enums:G_HE_TYPE:mapname", "enums:G_HE_TYPE:gametype", "enums:G_HE_TYPE:timer_down", "enums:G_HE_TYPE:timer_up", "enums:G_HE_TYPE:tenths_timer_down", "enums:G_HE_TYPE:tenths_timer_up", "enums:G_HE_TYPE:perks"],
+      "affects_label": "true",
+      "read_logic": {
+        "error_handling": [],
+        "behavior": ""
+      },
+      "write_logic": {
+        "error_handling": [],
+        "behavior": ""
+      },
+      "engine_value_modified": "structs:hudelem_s:flags",
+      "sources": {
+        "t6": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "HudElem_SetFont3dUseGlowColor", "HudElem_GetFont3dUseGlowColor", "DrawHudElemString", "structs:hudelem_s"],
+        "t5": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "HudElem_SetFont3dUseGlowColor", "HudElem_GetFont3dUseGlowColor", "DrawHudElemString", "structs:hudelem_s"],
+        "t4": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "HudElem_SetFont3dUseGlowColor", "HudElem_GetFont3dUseGlowColor", "DrawHudElemString", "structs:hudelem_s"]
+      },
+      "game_specific_desc": { "t6": {"mp": "Unsupported in engine.", "sp": "", "zm": "Unsupported in engine."}, "t5": {"mp": "", "sp": ""}, "t4": {"mp": "", "sp": ""} },
+      "general_desc": "Allows the hudelem text while using a 3D font style to apply a glow color as well."
     },
     "glowcolor": {
-      "supported_games": ["t6"]
+      "supported_games": { "t6": ["mp", "sp", "zm"], "t5": ["mp", "sp"], "t4": ["mp", "sp"] },
+      "permissions": ["read", "write"],
+      "default_value": "(0.0f, 0.0f, 0.0f)",
+      "value_type": "vector",
+      "value_subtypes": ["RGB as 3 floats"],
+      "supported_hudelem_types": ["enums:G_HE_TYPE:text", "enums:G_HE_TYPE:value", "enums:G_HE_TYPE:playername", "enums:G_HE_TYPE:mapname", "enums:G_HE_TYPE:gametype", "enums:G_HE_TYPE:timer_down", "enums:G_HE_TYPE:timer_up", "enums:G_HE_TYPE:tenths_timer_down", "enums:G_HE_TYPE:tenths_timer_up", "enums:G_HE_TYPE:perks"],
+      "affects_label": "true",
+      "read_logic": {
+        "error_handling": [],
+        "behavior": ""
+      },
+      "write_logic": {
+        "error_handling": [],
+        "behavior": "clamp to minimum of 0, maximum of 1"
+      },
+      "engine_value_modified": "structs:hudelem_s:flags",
+      "sources": {
+        "t6": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "HudElem_SetGlowColor", "HudElem_GetGlowColor", "DrawHudElemString", "structs:hudelem_s"],
+        "t5": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "HudElem_SetGlowColor", "HudElem_GetGlowColor", "DrawHudElemString", "structs:hudelem_s"],
+        "t4": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "HudElem_SetGlowColor", "HudElem_GetGlowColor", "DrawHudElemString", "structs:hudelem_s"]
+      },
+      "general_desc": "Controls the glow color for hudelem."
     },
     "glowalpha": {
-      "supported_games": ["t6"]
+      "supported_games": { "t6": ["mp", "sp", "zm"], "t5": ["mp", "sp"], "t4": ["mp", "sp"] },
+      "permissions": ["read", "write"],
+      "default_value": "0.0f",
+      "value_type": "float",
+      "value_subtypes": ["alpha as float"],
+      "supported_hudelem_types": ["enums:G_HE_TYPE:text", "enums:G_HE_TYPE:value", "enums:G_HE_TYPE:playername", "enums:G_HE_TYPE:mapname", "enums:G_HE_TYPE:gametype", "enums:G_HE_TYPE:timer_down", "enums:G_HE_TYPE:timer_up", "enums:G_HE_TYPE:tenths_timer_down", "enums:G_HE_TYPE:tenths_timer_up", "enums:G_HE_TYPE:perks"],
+      "affects_label": "true",
+      "read_logic": {
+        "error_handling": [],
+        "behavior": ""
+      },
+      "write_logic": {
+        "error_handling": [],
+        "behavior": "clamp to minimum of 0, maximum of 1"
+      },
+      "engine_value_modified": "structs:hudelem_s:flags",
+      "sources": {
+        "t6": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "HudElem_SetGlowAlpha", "HudElem_GetGlowAlpha", "DrawHudElemString", "structs:hudelem_s"],
+        "t5": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "HudElem_SetGlowAlpha", "HudElem_GetGlowAlpha", "DrawHudElemString", "structs:hudelem_s"],
+        "t4": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "HudElem_SetGlowAlpha", "HudElem_GetGlowAlpha", "DrawHudElemString", "structs:hudelem_s"]
+      },
+      "general_desc": "Controls the glow alpha for hudelem."
     },
     "archived": {
-      "supported_games": ["t6"]
+      "supported_games": { "t6": ["mp", "sp", "zm"], "t5": ["mp", "sp"], "t4": ["mp", "sp"] },
+      "permissions": ["read", "write"],
+      "default_value": "0.0f",
+      "value_type": "float",
+      "value_subtypes": ["alpha as float"],
+      "supported_hudelem_types": ["enums:G_HE_TYPE:all"],
+      "affects_label": "true",
+      "read_logic": {
+        "error_handling": [],
+        "behavior": ""
+      },
+      "write_logic": {
+        "error_handling": [],
+        "behavior": "clamp to minimum of 0, maximum of 1"
+      },
+      "engine_value_modified": "structs:hudelem_s:flags",
+      "sources": {
+        "t6": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "HudElem_SetGlowAlpha", "HudElem_GetGlowAlpha", "DrawHudElemString", "structs:game_hudelem_s"],
+        "t5": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "HudElem_SetGlowAlpha", "HudElem_GetGlowAlpha", "DrawHudElemString", "structs:game_hudelem_s"],
+        "t4": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "HudElem_SetGlowAlpha", "HudElem_GetGlowAlpha", "DrawHudElemString", "structs:game_hudelem_s"]
+      },
+      "game_specific_desc": { "t6": {"mp": "", "sp": "Unsupported in engine.", "zm": "Unsupported in engine."}, "t5": {"mp": "", "sp": ""}, "t4": {"mp": "", "sp": "Unsupported in engine."} },
+      "general_desc": "Controls the glow color for hudelem."
     },
     "ui3dwindow": {
-      "supported_games": ["t6"]
+      "supported_games": { "t6": ["mp", "zm"] }
     },
     "showplayerteamhudelemtospectator": {
-      "supported_games": ["t6"]
+      "supported_games": { "t6": ["mp", "zm"] }
     }
   }
 }
