@@ -286,7 +286,7 @@
     "label": {
       "supported_games": { "t6": ["mp", "sp", "zm"], "t5": ["mp", "sp"], "t4": ["mp", "sp"] },
       "permissions": ["read", "write"],
-      "default_value": "1.0f",
+      "default_value": "",
       "value_type": "istring",
       "value_subtypes": ["int"],
       "supported_hudelem_types": ["enums:G_HE_TYPE:all"],

@@ -1,0 +1,98 @@
+{
+	"header": {
+	  "tags": ["gsc", "script", "fields", "sentient", "ai", "actor", "bot", "vehicle", "player"],
+	  "general_desc": "./field-descriptions.md#sentient-fields"
+	},
+	"body": {
+	  "targetname": {
+		"supported_games": { "t6": ["mp", "sp", "zm"] },
+		"permissions": ["read"],
+		"default_value": "",
+		"value_type": "string",
+		"value_subtypes": ["string"],
+		"read_logic": {
+		  "error_handling": [],
+		  "behavior": "direct"
+		},
+		"engine_value_modified": "structs:pathnode_constant_t:targetname",
+		"sources": {
+		  "t6": ["structs:pathnode_constant_t"],
+		  "t5": [],
+		  "t4": []
+		},
+		"general_desc": "Reads a node's targetname set by the pathdata. Usually used for the target field to point to this node. Nodes with traversals use this to link the end node to itself."
+	  },
+	"target": {
+		"supported_games": { "t6": ["mp", "sp", "zm"] },
+		"permissions": ["read"],
+		"default_value": "",
+		"value_type": "string",
+		"value_subtypes": ["string"],
+		"read_logic": {
+		"error_handling": [],
+		"behavior": "direct"
+		},
+		"engine_value_modified": "structs:pathnode_constant_t:target",
+		"sources": {
+		"t6": ["structs:pathnode_constant_t"],
+		"t5": [],
+		"t4": []
+		},
+		"general_desc": "Reads a node's target set by the pathdata. Target field should point to the value of a targetname."
+	},
+	"animscript": {
+		"supported_games": { "t6": ["mp", "sp", "zm"] },
+		"permissions": ["read"],
+		"default_value": "",
+		"value_type": "string",
+		"value_subtypes": ["string"],
+		"read_logic": {
+		"error_handling": [],
+		"behavior": "direct"
+		},
+		"engine_value_modified": "structs:pathnode_constant_t:animscript",
+		"sources": {
+		"t6": ["structs:pathnode_constant_t"],
+		"t5": [],
+		"t4": []
+		},
+		"general_desc": "Reads a node's animscript set by the pathdata. Used for determining what traversal to use when encountering the node."
+	},
+	"script_linkname": {
+		"supported_games": { "t6": ["mp", "sp", "zm"] },
+		"permissions": ["read"],
+		"default_value": "",
+		"value_type": "string",
+		"value_subtypes": ["string"],
+		"read_logic": {
+		"error_handling": [],
+		"behavior": "direct"
+		},
+		"engine_value_modified": "structs:pathnode_constant_t:script_linkName",
+		"sources": {
+		"t6": ["structs:pathnode_constant_t"],
+		"t5": [],
+		"t4": []
+		},
+		"general_desc": "Reads a node's script_linkname set by the pathdata."
+	},
+	"script_noteworthy": {
+		"supported_games": { "t6": ["mp", "sp", "zm"] },
+		"permissions": ["read"],
+		"default_value": "",
+		"value_type": "string",
+		"value_subtypes": ["string"],
+		"read_logic": {
+		"error_handling": [],
+		"behavior": "direct"
+		},
+		"engine_value_modified": "structs:pathnode_constant_t:script_linkName",
+		"sources": {
+		"t6": ["structs:pathnode_constant_t"],
+		"t5": [],
+		"t4": []
+		},
+		"general_desc": "Reads a node's script_linkname set by the pathdata."
+	}
+	  }
+}

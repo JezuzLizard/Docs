@@ -12,6 +12,10 @@ union hudelem_color_t
   int rgba;
 };
 
+typedef float vec2_t[2];
+typedef float vec3_t[3];
+typedef float vec4_t[4];
+
 namespace t6
 {
   struct hudelem_s
@@ -89,6 +93,27 @@ namespace t6
     float color[4];
     int timeNow;
   };
+
+  struct pathnode_constant_t
+  {
+    int type;
+    int spawnflags;
+    unsigned __int16 targetname;
+    unsigned __int16 script_linkName;
+    unsigned __int16 script_noteworthy;
+    unsigned __int16 target;
+    unsigned __int16 animscript;
+    int animscriptfunc;
+    vec3_t vOrigin;
+    float fAngle;
+    vec2_t forward;
+    float fRadius;
+    float minUseDistSq;
+    __int16 wOverlapNode[2];
+    unsigned __int16 totalLinkCount;
+    void* /*pathlink_s**/ Links;
+  };
+
 }
 
 namespace t5
