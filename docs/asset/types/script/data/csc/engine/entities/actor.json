@@ -1,0 +1,35 @@
+{
+	"header": {
+	  "tags": ["csc", "script", "entities", "actor"],
+	  "general_desc": "./field-descriptions.md#script-hudelem-fields"
+	},
+	"body": {
+		"supported_games": { "t6": ["mp", "sp", "zm"], "t5": ["mp", "sp"], "t4": ["mp", "sp"] },
+		"permissions": ["read"],
+		"networked": true,
+		"supported_ent_fields": ["actor-fields", "ent-fields", "sentient-fields"],
+		"supported_methods": [],
+		"supported_functions": [],
+		"engine_defines": [{"spawn_limit": "MAX_ACTORS"}],
+		"default_value": "0.0f",
+		"value_type": "float",
+		"value_subtypes": ["float"],
+		"supported_hudelem_types": ["enums:G_HE_TYPE:all"],
+		"affects_label": "true",
+		"read_logic": {
+		  "error_handling": [],
+		  "behavior": "direct"
+		},
+		"write_logic": {
+		  "error_handling": [],
+		  "behavior": "direct"
+		},
+		"engine_value_modified": "structs:hudelem_s:x",
+		"sources": {
+		  "t6": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "structs:hudelem_s"],
+		  "t5": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "structs:hudelem_s"],
+		  "t4": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "structs:hudelem_s"]
+		},
+		"general_desc": "Reads, and writes to the hudelem's x coordinate on screen. Coordinates are relative to the vertical and horizontal alignments for the hudelem(CITATION NEEDED)."
+	}
+}

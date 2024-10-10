@@ -133,6 +133,30 @@
     "HUDELEMFLAG_DEBUG": "0x40000"
   },
   "G_SESSIONSTATE": ["playing", "dead", "spectator", "intermission"],
-  "G_DEMOSTATE": ["idle", "recording", "playing"]
+  "G_DEMOSTATE": ["idle", "recording", "playing"],
+  "G_NODE_TYPES": [
+    "bad_node",
+    "node_pathnode",
+    "node_cover_stand",
+    "node_cover_crouch",
+    "node_cover_crouch_window",
+    "node_cover_prone",
+    "node_cover_right",
+    "node_cover_left",
+    "node_cover_pillar",
+    "node_ambush",
+    "node_exposed",
+    "node_concealment_stand",
+    "node_concealment_crouch",
+    "node_concealment_prone",
+    "node_reacquire",
+    "node_balcony",
+    "node_scripted",
+    "node_negotiation_begin",
+    "node_negotiation_end",
+    "node_turret",
+    "node_guard",
+    "dont_link"
+  ]
 }
 }
