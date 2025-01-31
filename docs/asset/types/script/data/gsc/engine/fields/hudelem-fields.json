@@ -11,14 +11,16 @@
       "value_type": "float",
       "value_subtypes": ["float"],
       "supported_hudelem_types": ["enums:G_HE_TYPE:all"],
-      "affects_label": "true",
+      
       "read_logic": {
         "error_handling": [],
-        "behavior": "direct"
+        "behavior": "",
+        "handler": "direct"
       },
       "write_logic": {
         "error_handling": [],
-        "behavior": "direct"
+        "behavior": "",
+        "handler": "direct"
       },
       "engine_value_modified": "structs:hudelem_s:x",
       "sources": {
@@ -35,14 +37,16 @@
       "value_type": "float",
       "value_subtypes": ["float"],
       "supported_hudelem_types": ["enums:G_HE_TYPE:all"],
-      "affects_label": "true",
+      
       "read_logic": {
         "error_handling": [],
-        "behavior": "direct"
+        "behavior": "",
+        "handler": "direct"
       },
       "write_logic": {
         "error_handling": [],
-        "behavior": "direct"
+        "behavior": "",
+        "handler": "direct"
       },
       "engine_value_modified": "structs:hudelem_s:y",
       "sources": {
@@ -59,14 +63,16 @@
       "value_type": "float",
       "value_subtypes": ["float"],
       "supported_hudelem_types": ["enums:G_HE_TYPE:all"],
-      "affects_label": "true",
+      
       "read_logic": {
         "error_handling": [],
-        "behavior": "direct"
+        "behavior": "",
+        "handler": "direct"
       },
       "write_logic": {
         "error_handling": [],
-        "behavior": "direct"
+        "behavior": "",
+        "handler": "direct"
       },
       "engine_value_modified": "structs:hudelem_s:z",
       "sources": {
@@ -98,14 +104,16 @@
       "value_type": "float",
       "value_subtypes": ["float"],
       "supported_hudelem_types": ["enums:G_HE_TYPE:text", "enums:G_HE_TYPE:value", "enums:G_HE_TYPE:playername", "enums:G_HE_TYPE:mapname", "enums:G_HE_TYPE:gametype", "enums:G_HE_TYPE:timer_down", "enums:G_HE_TYPE:timer_up", "enums:G_HE_TYPE:tenths_timer_down", "enums:G_HE_TYPE:tenths_timer_up", "enums:G_HE_TYPE:perks"],
-      "affects_label": "true",
+      
       "read_logic": {
         "error_handling": [],
-        "behavior": "direct"
+        "behavior": "",
+        "handler": "direct"
       },
       "write_logic": {
         "error_handling": ["font scale was %g; should be > 0"],
-        "behavior": "Values greater than 4.2f are truncated to 4.2f"
+        "behavior": "Values greater than 4.2f are truncated to 4.2f",
+        "handler": "HudElem_SetFontScale"
       },
       "engine_value_modified": "structs:hudelem_s:fontScale",
       "sources": {
@@ -122,14 +130,16 @@
       "value_type": "string",
       "value_subtypes": ["enums:G_HE_FONTS"],
       "supported_hudelem_types": ["enums:G_HE_TYPE:text", "enums:G_HE_TYPE:value", "enums:G_HE_TYPE:playername", "enums:G_HE_TYPE:mapname", "enums:G_HE_TYPE:gametype", "enums:G_HE_TYPE:timer_down", "enums:G_HE_TYPE:timer_up", "enums:G_HE_TYPE:tenths_timer_down", "enums:G_HE_TYPE:tenths_timer_up", "enums:G_HE_TYPE:perks"],
-      "affects_label": "true",
+      
       "read_logic": {
         "error_handling": [],
-        "behavior": "direct"
+        "behavior": "",
+        "handler": "HudElem_GetFont"
       },
       "write_logic": {
         "error_handling": ["Must be one of enums:G_HE_FONTS"],
-        "behavior": ""
+        "behavior": "",
+        "handler": "HudElem_SetFont"
       },
       "engine_value_modified": "structs:hudelem_s:font",
       "sources": {
@@ -146,14 +156,16 @@
       "value_type": "string",
       "value_subtypes": ["enums:G_HE_ALIGNX"],
       "supported_hudelem_types": ["enums:G_HE_TYPE:all"],
-      "affects_label": "true",
+      
       "read_logic": {
         "error_handling": [],
-        "behavior": "direct"
+        "behavior": "",
+        "handler": "HudElem_GetAlignX"
       },
       "write_logic": {
         "error_handling": ["Must be one of enums:G_HE_ALIGNX"],
-        "behavior": ""
+        "behavior": "",
+        "handler": "HudElem_SetAlignX"
       },
       "engine_value_modified": "",
       "sources": {
@@ -170,14 +182,16 @@
       "value_type": "string",
       "value_subtypes": ["enums:G_HE_ALIGNY"],
       "supported_hudelem_types": ["enums:G_HE_TYPE:all"],
-      "affects_label": "true",
+      
       "read_logic": {
         "error_handling": [],
-        "behavior": "direct"
+        "behavior": "",
+        "handler": "HudElem_GetAlignY"
       },
       "write_logic": {
         "error_handling": ["Must be one of enums:G_HE_ALIGNY"],
-        "behavior": ""
+        "behavior": "",
+        "handler": "HudElem_SetAlignY"
       },
       "engine_value_modified": "",
       "sources": {
@@ -194,14 +208,16 @@
       "value_type": "string",
       "value_subtypes": ["enums:G_HE_HORZALIGN"],
       "supported_hudelem_types": ["enums:G_HE_TYPE:all"],
-      "affects_label": "true",
+      
       "read_logic": {
         "error_handling": [],
-        "behavior": "direct"
+        "behavior": "",
+        "handler": "HudElem_GetHorzAlign"
       },
       "write_logic": {
         "error_handling": ["Must be one of enums:G_HE_HORZALIGN"],
-        "behavior": ""
+        "behavior": "",
+        "handler": "HudElem_SetHorzAlign"
       },
       "engine_value_modified": "",
       "sources": {
@@ -218,14 +234,16 @@
       "value_type": "string",
       "value_subtypes": ["enums:G_HE_VERTALIGN"],
       "supported_hudelem_types": ["enums:G_HE_TYPE:all"],
-      "affects_label": "true",
+      
       "read_logic": {
         "error_handling": [],
-        "behavior": "direct"
+        "behavior": "",
+        "handler": "HudElem_GetVertAlign"
       },
       "write_logic": {
         "error_handling": ["Must be one of enums:G_HE_HORZALIGN"],
-        "behavior": ""
+        "behavior": "",
+        "handler": "HudElem_SetVertAlign"
       },
       "engine_value_modified": "",
       "sources": {
@@ -242,14 +260,16 @@
       "value_type": "vector",
       "value_subtypes": ["RGB as 3 floats"],
       "supported_hudelem_types": ["enums:G_HE_TYPE:all"],
-      "affects_label": "true",
+      
       "read_logic": {
         "error_handling": [],
-        "behavior": ""
+        "behavior": "",
+        "handler": "HudElem_GetColor"
       },
       "write_logic": {
         "error_handling": [],
-        "behavior": "clamp to minimum of 0, maximum of 1"
+        "behavior": "clamp to minimum of 0, maximum of 1",
+        "handler": "HudElem_SetColor"
       },
       "engine_value_modified": "structs:hudelem_s:color",
       "sources": {
@@ -266,14 +286,16 @@
       "value_type": "float",
       "value_subtypes": ["alpha as float"],
       "supported_hudelem_types": ["enums:G_HE_TYPE:all"],
-      "affects_label": "true",
+      
       "read_logic": {
         "error_handling": [],
-        "behavior": ""
+        "behavior": "",
+        "handler": "HudElem_GetAlpha"
       },
       "write_logic": {
         "error_handling": [],
-        "behavior": "clamp to minimum of 0, maximum of 1"
+        "behavior": "clamp to minimum of 0, maximum of 1",
+        "handler": "HudElem_SetAlpha"
       },
       "engine_value_modified": "structs:hudelem_s:color",
       "sources": {
@@ -290,14 +312,16 @@
       "value_type": "istring",
       "value_subtypes": ["int"],
       "supported_hudelem_types": ["enums:G_HE_TYPE:all"],
-      "affects_label": "true",
+      
       "read_logic": {
         "error_handling": [],
-        "behavior": "returns the index the localized configstring is registered at"
+        "behavior": "returns the index the localized configstring is registered at",
+        "handler": "direct"
       },
       "write_logic": {
         "error_handling": [],
-        "behavior": "insert or assign a localized configstring to the hudelem based on the input"
+        "behavior": "insert or assign a localized configstring to the hudelem based on the input",
+        "handler": "HudElem_SetLocalizedString"
       },
       "engine_value_modified": "structs:hudelem_s:label",
       "sources": {
@@ -314,14 +338,16 @@
       "value_type": "float",
       "value_subtypes": ["float"],
       "supported_hudelem_types": ["enums:G_HE_TYPE:all"],
-      "affects_label": "true",
+      
       "read_logic": {
         "error_handling": [],
-        "behavior": ""
+        "behavior": "",
+        "handler": "direct"
       },
       "write_logic": {
         "error_handling": [],
-        "behavior": ""
+        "behavior": "",
+        "handler": "direct"
       },
       "engine_value_modified": "structs:hudelem_s:sort",
       "sources": {
@@ -338,14 +364,16 @@
       "value_type": "int",
       "value_subtypes": ["bool", "enums:G_HE_FLAG:FOREGROUND"],
       "supported_hudelem_types": ["enums:G_HE_TYPE:all"],
-      "affects_label": "true",
+      
       "read_logic": {
         "error_handling": [],
-        "behavior": ""
+        "behavior": "",
+        "handler": "HudElem_GetFlagForeground"
       },
       "write_logic": {
         "error_handling": [],
-        "behavior": ""
+        "behavior": "",
+        "handler": "HudElem_SetFlagForeground"
       },
       "engine_value_modified": "structs:hudelem_s:flags",
       "sources": {
@@ -362,14 +390,16 @@
       "value_type": "int",
       "value_subtypes": ["bool", "enums:G_HE_FLAG:HIDEWHENDEAD"],
       "supported_hudelem_types": ["enums:G_HE_TYPE:all"],
-      "affects_label": "true",
+      
       "read_logic": {
         "error_handling": [],
-        "behavior": ""
+        "behavior": "",
+        "handler": "HudElem_GetFlagHideWhenDead"
       },
       "write_logic": {
         "error_handling": [],
-        "behavior": ""
+        "behavior": "",
+        "handler": "HudElem_SetFlagHideWhenDead"
       },
       "engine_value_modified": "structs:hudelem_s:flags",
       "sources": {
@@ -386,14 +416,16 @@
       "value_type": "int",
       "value_subtypes": ["bool", "enums:G_HE_FLAG:HIDEWHENINKILLCAM"],
       "supported_hudelem_types": ["enums:G_HE_TYPE:all"],
-      "affects_label": "true",
+      
       "read_logic": {
         "error_handling": [],
-        "behavior": ""
+        "behavior": "",
+        "handler": "HudElem_GetFlagHideWhenInKillCam"
       },
       "write_logic": {
         "error_handling": [],
-        "behavior": ""
+        "behavior": "",
+        "handler": "HudElem_SetFlagHideWhenInKillCam"
       },
       "engine_value_modified": "structs:hudelem_s:flags",
       "sources": {
@@ -410,14 +442,16 @@
       "value_type": "int",
       "value_subtypes": ["bool", "enums:G_HE_FLAG:HIDEWHENINDEMO"],
       "supported_hudelem_types": ["enums:G_HE_TYPE:all"],
-      "affects_label": "true",
+      
       "read_logic": {
         "error_handling": [],
-        "behavior": ""
+        "behavior": "",
+        "handler": "HudElem_SetFlagHideWhenInDemo"
       },
       "write_logic": {
         "error_handling": [],
-        "behavior": ""
+        "behavior": "",
+        "handler": "HudElem_GetFlagHideWhenInDemo"
       },
       "engine_value_modified": "structs:hudelem_s:flags",
       "sources": {
@@ -437,14 +471,16 @@
         "enums:G_HE_FLAG:IMMUNE_TO_DEMO_GAMEHUD_SETTINGS"
       ],
       "supported_hudelem_types": ["enums:G_HE_TYPE:all"],
-      "affects_label": "true",
+      
       "read_logic": {
         "error_handling": [],
-        "behavior": ""
+        "behavior": "",
+        "handler": "HudElem_GetFlagImmuneToDemoGameHudSettings"
       },
       "write_logic": {
         "error_handling": [],
-        "behavior": ""
+        "behavior": "",
+        "handler": "HudElem_SetFlagImmuneToDemoGameHudSettings"
       },
       "engine_value_modified": "structs:hudelem_s:flags",
       "sources": {
@@ -461,14 +497,16 @@
       "value_type": "int",
       "value_subtypes": ["bool", "enums:G_HE_FLAG:IMMUNE_TO_DEMO_FREECAMERA"],
       "supported_hudelem_types": ["enums:G_HE_TYPE:all"],
-      "affects_label": "true",
+      
       "read_logic": {
         "error_handling": [],
-        "behavior": ""
+        "behavior": "",
+        "handler": "HudElem_GetFlagImmuneToDemoFreeCamera"
       },
       "write_logic": {
         "error_handling": [],
-        "behavior": ""
+        "behavior": "",
+        "handler": "HudElem_SetFlagImmuneToDemoFreeCamera"
       },
       "engine_value_modified": "structs:hudelem_s:flags",
       "sources": {
@@ -485,14 +523,16 @@
       "value_type": "int",
       "value_subtypes": ["bool", "enums:G_HE_FLAG:HIDEWHILEREMOTECONTROLING"],
       "supported_hudelem_types": ["enums:G_HE_TYPE:all"],
-      "affects_label": "true",
+      
       "read_logic": {
         "error_handling": [],
-        "behavior": ""
+        "behavior": "",
+        "handler": "HudElem_GetFlagHideWhileRemoteControlling"
       },
       "write_logic": {
         "error_handling": [],
-        "behavior": ""
+        "behavior": "",
+        "handler": "HudElem_SetFlagHideWhileRemoteControlling"
       },
       "engine_value_modified": "structs:hudelem_s:flags",
       "sources": {
@@ -509,14 +549,16 @@
       "value_type": "int",
       "value_subtypes": ["bool", "enums:G_HE_FLAG:HIDEWHENINMENU"],
       "supported_hudelem_types": ["enums:G_HE_TYPE:all"],
-      "affects_label": "true",
+      
       "read_logic": {
         "error_handling": [],
-        "behavior": ""
+        "behavior": "",
+        "handler": "HudElem_GetFlagHideWhenInMenu"
       },
       "write_logic": {
         "error_handling": [],
-        "behavior": ""
+        "behavior": "",
+        "handler": "HudElem_SetFlagHideWhenInMenu"
       },
       "engine_value_modified": "structs:hudelem_s:flags",
       "sources": {
@@ -533,14 +575,16 @@
       "value_type": "int",
       "value_subtypes": ["bool", "enums:G_HE_FLAG:HIDEWHENINSCOPE"],
       "supported_hudelem_types": ["enums:G_HE_TYPE:all"],
-      "affects_label": "true",
+      
       "read_logic": {
         "error_handling": [],
-        "behavior": ""
+        "behavior": "",
+        "handler": "HudElem_GetFlagHideWhenInScope"
       },
       "write_logic": {
         "error_handling": [],
-        "behavior": ""
+        "behavior": "",
+        "handler": "HudElem_SetFlagHideWhenInScope"
       },
       "engine_value_modified": "structs:hudelem_s:flags",
       "sources": {
@@ -557,14 +601,16 @@
       "value_type": "int",
       "value_subtypes": ["bool", "enums:G_HE_FLAG:FADEWHENTARGETED"],
       "supported_hudelem_types": ["enums:G_HE_TYPE:all"],
-      "affects_label": "true",
+      
       "read_logic": {
         "error_handling": [],
-        "behavior": ""
+        "behavior": "",
+        "handler": "HudElem_GetFlagFadeWhenTargeted"
       },
       "write_logic": {
         "error_handling": [],
-        "behavior": ""
+        "behavior": "",
+        "handler": "HudElem_SetFlagFadeWhenTargeted"
       },
       "engine_value_modified": "structs:hudelem_s:flags",
       "sources": {
@@ -581,14 +627,16 @@
       "value_type": "string",
       "value_subtypes": ["enums:G_HE_TEXTSTYLE"],
       "supported_hudelem_types": ["enums:G_HE_TYPE:text", "enums:G_HE_TYPE:value", "enums:G_HE_TYPE:playername", "enums:G_HE_TYPE:mapname", "enums:G_HE_TYPE:gametype", "enums:G_HE_TYPE:timer_down", "enums:G_HE_TYPE:timer_up", "enums:G_HE_TYPE:tenths_timer_down", "enums:G_HE_TYPE:tenths_timer_up"],
-      "affects_label": "true",
+      
       "read_logic": {
         "error_handling": [],
-        "behavior": ""
+        "behavior": "",
+        "handler": "HudElem_GetFontStyle3d"
       },
       "write_logic": {
         "error_handling": ["unknown text style '%s', should be normal, shadowed, or shadowedmore"],
-        "behavior": ""
+        "behavior": "",
+        "handler": "HudElem_SetFontStyle3d"
       },
       "engine_value_modified": "structs:hudelem_s:flags",
       "sources": {
@@ -606,14 +654,16 @@
       "value_type": "int",
       "value_subtypes": ["bool", "enums:G_HE_FLAG:FONT3D_USE_GLOWCOLOR"],
       "supported_hudelem_types": ["enums:G_HE_TYPE:text", "enums:G_HE_TYPE:value", "enums:G_HE_TYPE:playername", "enums:G_HE_TYPE:mapname", "enums:G_HE_TYPE:gametype", "enums:G_HE_TYPE:timer_down", "enums:G_HE_TYPE:timer_up", "enums:G_HE_TYPE:tenths_timer_down", "enums:G_HE_TYPE:tenths_timer_up", "enums:G_HE_TYPE:perks"],
-      "affects_label": "true",
+      
       "read_logic": {
         "error_handling": [],
-        "behavior": ""
+        "behavior": "",
+        "handler": "HudElem_GetFont3dUseGlowColor"
       },
       "write_logic": {
         "error_handling": [],
-        "behavior": ""
+        "behavior": "",
+        "handler": "HudElem_SetFont3dUseGlowColor"
       },
       "engine_value_modified": "structs:hudelem_s:flags",
       "sources": {
@@ -631,14 +681,16 @@
       "value_type": "vector",
       "value_subtypes": ["RGB as 3 floats"],
       "supported_hudelem_types": ["enums:G_HE_TYPE:text", "enums:G_HE_TYPE:value", "enums:G_HE_TYPE:playername", "enums:G_HE_TYPE:mapname", "enums:G_HE_TYPE:gametype", "enums:G_HE_TYPE:timer_down", "enums:G_HE_TYPE:timer_up", "enums:G_HE_TYPE:tenths_timer_down", "enums:G_HE_TYPE:tenths_timer_up", "enums:G_HE_TYPE:perks"],
-      "affects_label": "true",
+      
       "read_logic": {
         "error_handling": [],
-        "behavior": ""
+        "behavior": "",
+        "handler": "HudElem_GetGlowColor"
       },
       "write_logic": {
         "error_handling": [],
-        "behavior": "clamp to minimum of 0, maximum of 1"
+        "behavior": "clamp to minimum of 0, maximum of 1",
+        "handler": "HudElem_SetGlowColor"
       },
       "engine_value_modified": "structs:hudelem_s:flags",
       "sources": {
@@ -655,14 +707,16 @@
       "value_type": "float",
       "value_subtypes": ["alpha as float"],
       "supported_hudelem_types": ["enums:G_HE_TYPE:text", "enums:G_HE_TYPE:value", "enums:G_HE_TYPE:playername", "enums:G_HE_TYPE:mapname", "enums:G_HE_TYPE:gametype", "enums:G_HE_TYPE:timer_down", "enums:G_HE_TYPE:timer_up", "enums:G_HE_TYPE:tenths_timer_down", "enums:G_HE_TYPE:tenths_timer_up", "enums:G_HE_TYPE:perks"],
-      "affects_label": "true",
+      
       "read_logic": {
         "error_handling": [],
-        "behavior": ""
+        "behavior": "",
+        "handler": "HudElem_GetGlowAlpha"
       },
       "write_logic": {
         "error_handling": [],
-        "behavior": "clamp to minimum of 0, maximum of 1"
+        "behavior": "clamp to minimum of 0, maximum of 1",
+        "handler": "HudElem_SetGlowAlpha"
       },
       "engine_value_modified": "structs:hudelem_s:flags",
       "sources": {
@@ -673,20 +727,76 @@
       "general_desc": "Controls the glow alpha for hudelem."
     },
     "archived": {
-      "supported_games": { "t6": ["mp", "sp", "zm"], "t5": ["mp", "sp"], "t4": ["mp", "sp"] },
+      "supported_games": { "t6": ["mp", "zm"], "t5": ["mp"], "t4": ["mp"] },
       "permissions": ["read", "write"],
-      "default_value": "0.0f",
-      "value_type": "float",
-      "value_subtypes": ["alpha as float"],
+      "default_value": "1",
+      "value_type": "int",
+      "value_subtypes": ["bool"],
       "supported_hudelem_types": ["enums:G_HE_TYPE:all"],
-      "affects_label": "true",
+      
       "read_logic": {
         "error_handling": [],
-        "behavior": ""
+        "behavior": "",
+        "handler": "direct"
       },
       "write_logic": {
         "error_handling": [],
-        "behavior": "clamp to minimum of 0, maximum of 1"
+        "behavior": "",
+        "handler": "HudElem_SetBoolean"
+      },
+      "engine_value_modified": "structs::game_hudelem_s:archived",
+      "sources": {
+        "t6": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "HudElem_SetBoolean", "DrawHudElemString", "GetSortedHudElems", "HudElem_UpdateClient", "HudElem_ClearClient", "MSG_WriteDeltaPlayerstate", "structs:game_hudelem_s"],
+        "t5": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "HudElem_SetBoolean", "DrawHudElemString", "GetSortedHudElems", "HudElem_UpdateClient", "HudElem_ClearClient", "MSG_WriteDeltaPlayerstate", "structs:game_hudelem_s"],
+        "t4": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "HudElem_SetBoolean", "DrawHudElemString", "GetSortedHudElems", "HudElem_UpdateClient", "HudElem_ClearClient", "MSG_WriteDeltaPlayerstate", "structs:game_hudelem_s"]
+      },
+      "game_specific_desc": { "t6": {"mp": "", "sp": "Unsupported in engine.", "zm": "Unsupported in engine."}, "t5": {"mp": "", "sp": ""}, "t4": {"mp": "", "sp": "Unsupported in engine."} },
+      "general_desc": "Unknown."
+    },
+    "ui3dwindow": {
+      "supported_games": { "t6": ["mp", "zm"] },
+      "permissions": ["read", "write"],
+      "default_value": "-1",
+      "value_type": "int",
+      "value_subtypes": ["0 to 5"],
+      "supported_hudelem_types": ["enums:G_HE_TYPE:all"],
+      
+      "read_logic": {
+        "error_handling": [],
+        "behavior": "",
+        "handler": "HudElem_GetUI3DWindow"
+      },
+      "write_logic": {
+        "error_handling": [],
+        "behavior": "",
+        "handler": "HudElem_SetUI3DWindow"
+      },
+      "engine_value_modified": "structs:hudelem_s:ui3dWindow",
+      "sources": {
+        "t6": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "HudElem_SetUI3DWindow", "HudElem_GetUI3DWindow", "DrawHudElemString", "structs:game_hudelem_s"],
+        "t5": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "HudElem_SetUI3DWindow", "HudElem_GetUI3DWindow", "DrawHudElemString", "structs:game_hudelem_s"],
+        "t4": ["HudElem_SetDefaults", "GScr_AddFieldsForHudElems", "HudElem_SetUI3DWindow", "HudElem_GetUI3DWindow", "DrawHudElemString", "structs:game_hudelem_s"]
+      },
+      "game_specific_desc": { "t6": {"mp": "", "sp": "Unsupported in engine.", "zm": "Unsupported in engine."}, "t5": {"mp": "", "sp": ""}, "t4": {"mp": "", "sp": "Unsupported in engine."} },
+      "general_desc": "Unknown."
+    },
+    "showplayerteamhudelemtospectator": {
+      "supported_games": { "t6": ["mp", "zm"] },
+      "permissions": ["read", "write"],
+      "default_value": "0",
+      "value_type": "int",
+      "value_subtypes": ["enums:G_HE_FLAG:SHOW_PLAYER_TEAM_HUDELEM_TO_SPECTATOR"],
+      "supported_hudelem_types": ["enums:G_HE_TYPE:all"],
+      
+      "read_logic": {
+        "error_handling": [],
+        "behavior": "",
+        "handler": "direct"
+      },
+      "write_logic": {
+        "error_handling": [],
+        "behavior": "clamp to minimum of 0, maximum of 1",
+        "handler": "HudElem_SetBoolean"
       },
       "engine_value_modified": "structs:hudelem_s:flags",
       "sources": {
@@ -696,12 +806,6 @@
       },
       "game_specific_desc": { "t6": {"mp": "", "sp": "Unsupported in engine.", "zm": "Unsupported in engine."}, "t5": {"mp": "", "sp": ""}, "t4": {"mp": "", "sp": "Unsupported in engine."} },
       "general_desc": "Controls the glow color for hudelem."
-    },
-    "ui3dwindow": {
-      "supported_games": { "t6": ["mp", "zm"] }
-    },
-    "showplayerteamhudelemtospectator": {
-      "supported_games": { "t6": ["mp", "zm"] }
     }
   }
 }

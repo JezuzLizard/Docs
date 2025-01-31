@@ -114,6 +114,34 @@ namespace t6
     void* /*pathlink_s**/ Links;
   };
 
+  struct GfxPlacement
+{
+  vec4_t quat;
+  vec3_t origin;
+};
+
+
+  struct DynEntityDef
+  {
+    DynEntityType type;
+    GfxPlacement pose;
+    void *xModel;
+    void *destroyedxModel;
+    unsigned __int16 brushModel;
+    unsigned __int16 physicsBrushModel;
+    const void *destroyFx;
+    unsigned int destroySound;
+    void *destroyPieces;
+    void *physPreset;
+    __int16 physConstraints[4];
+    int health;
+    int flags;
+    int contents;
+    unsigned __int16 targetname;
+    unsigned __int16 target;
+  };
+
+
 }
 
 namespace t5

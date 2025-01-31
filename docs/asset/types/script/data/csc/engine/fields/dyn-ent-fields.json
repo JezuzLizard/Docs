@@ -1,0 +1,71 @@
+{
+	"header": {
+	  "tags": ["csc", "script", "fields", "dynent", "clientside"],
+	  "general_desc": "./field-descriptions.md#script-hudelem-fields"
+	},
+	"body": {
+	  "origin": {
+		"supported_games": { "t6": ["mp", "sp", "zm"], "t5": ["mp", "sp"] },
+		"permissions": ["read", "write"],
+		"default_value": "(0.0f, 0.0f, 0.0f)",
+		"value_type": "vector",
+		"value_subtypes": ["float"],
+		"read_logic": {
+		  "error_handling": [],
+		  "behavior": "direct, applies to all local clients"
+		},
+		"write_logic": {
+		  "error_handling": [],
+		  "behavior": "direct, applies to all local clients"
+		},
+		"engine_value_modified": "structs:DynEntityDef:GfxPlacement:origin",
+		"sources": {
+		  "t6": ["CScr_AddFieldsForDynEntity"],
+		  "t5": ["CScr_AddFieldsForDynEntity"]
+		},
+		"general_desc": "Controls the origin of the dynamic entity from the local client's perspective."
+	  },
+	  "health": {
+		"supported_games": { "t6": ["mp", "sp", "zm"], "t5": ["mp", "sp"] },
+		"permissions": ["read", "write"],
+		"default_value": "defined by assets:clipmap",
+		"value_type": "int",
+		"value_subtypes": ["int"],
+		"read_logic": {
+		  "error_handling": [],
+		  "behavior": "direct"
+		},
+		"write_logic": {
+		  "error_handling": [],
+		  "behavior": "direct"
+		},
+		"engine_value_modified": "structs:DynEntityDef:health",
+		"sources": {
+		  "t6": ["CScr_AddFieldsForDynEntity"],
+		  "t5": ["CScr_AddFieldsForDynEntity"]
+		},
+		"general_desc": "Controls the health of the dynamic entity from the local client's perspective."
+	  },
+	  "targetname": {
+		"supported_games": { "t6": ["mp", "sp", "zm"], "t5": ["mp", "sp"] },
+		"permissions": ["read"],
+		"default_value": "defined by assets:clipmap",
+		"value_type": "int",
+		"value_subtypes": ["int"],
+		"read_logic": {
+		  "error_handling": ["dynent field field %s is read-only"],
+		  "behavior": "direct"
+		},
+		"write_logic": {
+		  "error_handling": [],
+		  "behavior": "direct"
+		},
+		"engine_value_modified": "structs:DynEntityDef:health",
+		"sources": {
+		  "t6": ["CScr_AddFieldsForDynEntity"],
+		  "t5": ["CScr_AddFieldsForDynEntity"]
+		},
+		"general_desc": "Controls the health of the dynamic entity from the local client's perspective."
+	  }
+	}
+}
