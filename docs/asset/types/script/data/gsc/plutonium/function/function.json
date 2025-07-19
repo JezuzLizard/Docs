@@ -71,10 +71,10 @@
 			"best_practices": "",
 			"additional_notes": "",
 			"examples": [
-				"../examples/plutonium/getfunction.gsc"
+				"../examples/plutonium/function/getfunction.gsc"
 			],
 			"pseudocode": [
-				"../pseudocode/plutonium/getfunction.gsc"
+				"../pseudocode/plutonium/function/getfunction.gsc"
 			],
 			"addon_key1": {},
 			"addon_key2": {},
@@ -134,10 +134,10 @@
 			"best_practices": "",
 			"additional_notes": "",
 			"examples": [
-				"../examples/plutonium/getfunctionname.gsc"
+				"../examples/plutonium/function/getfunctionname.gsc"
 			],
 			"pseudocode": [
-				"../pseudocode/plutonium/getfunctionname.gsc"
+				"../pseudocode/plutonium/function/getfunctionname.gsc"
 			],
 			"addon_key1": {},
 			"addon_key2": {},
@@ -219,10 +219,10 @@
 			"best_practices": "Due to when the script VM may execute; if you want to guarantee your code overriding the original behavior you need to invoke replacefunc as early as possible. The best way to do that is in the main() of a custom script. Additionally, using replacefunc in tandem with getfunction can allow your script to be gametype/map/mode agnostic.",
 			"additional_notes": "T6 ONLY: You can use the command \"listscriptdetours\" to list the currently applied detours from replacefunc calls.",
 			"examples": [
-				"../examples/plutonium/replacefunc.gsc"
+				"../examples/plutonium/function/replacefunc.gsc"
 			],
 			"pseudocode": [
-				"../pseudocode/plutonium/replacefunc.gsc"
+				"../pseudocode/plutonium/function/replacefunc.gsc"
 			],
 			"addon_key1": {},
 			"addon_key2": {},
@@ -251,7 +251,7 @@
 				"gsc"
 			],
 			"desc": "Given a <function_pointer> return the the current {function_detour} for that function.",
-			"use_case": "For removedetour in order to remove the detour from <function_pointer>.",
+			"use_case": "Allows for checking if an existing detour is applied to <function_pointer> and get a reference to {function_detour}.",
 			"fail_case": "<function_pointer> does not have a {function_detour}.",
 			"min_args": "1",
 			"max_args": "1",
@@ -266,11 +266,10 @@
 					"G_VAR_TYPES:undefined"
 				],
 				"return_structure": {},
-				"desc": "Return value {function_detour} is eligible for use as an argument for the removedetour builtin."
+				"desc": ""
 			},
 			"special_errors": [],
-			"special_warnings": [
-			],
+			"special_warnings": [],
 			"args": [
 				{
 					"name": "function_pointer",
@@ -285,10 +284,73 @@
 			"best_practices": "",
 			"additional_notes": "",
 			"examples": [
-				"../examples/plutonium/getdetour.gsc"
+				"../examples/plutonium/function/getdetour.gsc"
 			],
 			"pseudocode": [
-				"../pseudocode/plutonium/getdetour.gsc"
+				"../pseudocode/plutonium/function/getdetour.gsc"
+			],
+			"addon_key1": {},
+			"addon_key2": {},
+			"addon_key3": {},
+			"addon_key4": {},
+			"addon_key5": {}
+		},
+		"removedetour": {
+			"supported_games": {
+				"t4": [
+					"sp",
+					"mp"
+				],
+				"t5": [
+					"sp",
+					"mp"
+				],
+				"t6": [
+					"mp",
+					"zm"
+				]
+			},
+			"vanilla": false,
+			"supported_insts": [
+				"csc",
+				"gsc"
+			],
+			"desc": "Given a <function_pointer>, remove the detour from <function_pointer>.",
+			"use_case": "When you want to restore a detour'd function back to just calling the original function.",
+			"fail_case": "",
+			"min_args": "1",
+			"max_args": "1",
+			"type": "function",
+			"developer": "false",
+			"returns": {
+				"name": "",
+				"success_return_types": [
+				],
+				"fail_return_types": [
+				],
+				"return_structure": {},
+				"desc": ""
+			},
+			"special_errors": [ "If <function_pointer> is not a detour'd function pointer" ],
+			"special_warnings": [],
+			"args": [
+				{
+					"name": "function_pointer",
+					"ordinal": "1",
+					"expected_type": "G_VAR_TYPES:function",
+					"expected_values": "any script function that is detour'd",
+					"required": "true",
+					"desc": "A function pointer that has been detour'd by a call to replacefunc.",
+					"default_value": ""
+				}
+			],
+			"best_practices": "",
+			"additional_notes": "",
+			"examples": [
+				"../examples/plutonium/function/removedetour.gsc"
+			],
+			"pseudocode": [
+				"../pseudocode/plutonium/function/removedetour.gsc"
 			],
 			"addon_key1": {},
 			"addon_key2": {},

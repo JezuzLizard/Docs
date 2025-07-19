@@ -15,7 +15,7 @@ flag_hook( str )
     // now call original
     og_func = maps\_utility::flag;
     disabledetouronce( og_func );
-    answer = [[ og_func ]]( str );
+    answer = self [[ og_func ]]( str );
 
     iprintln( "returning " + answer );
     return answer;
