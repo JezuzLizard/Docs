@@ -1,0 +1,143 @@
+{
+	"header": {
+		"tags": [
+			"gsc",
+			"script",
+			"functions"
+		],
+		"desc": "Modules for additions to IO(Input/Output) functionality such as opening, closing, reading, writing, and appending files within a sandboxed environment \"scriptdata\".",
+		"additional_notes": "CSC(clientscripts) are not supported, and if the dvar \"scr_allowfileio\"(default 1) is 0. All file operations are sandboxed to the \"scriptdata\" folder. Meaning that operations for absolute paths or upwards traversals are not permitted and that the file path is implicitly prepended with the \"scriptdata\" folder if not explictly specified."
+	},
+	"body": {
+		"fs_testfile": {
+			"supported_games": {
+				"t4": [
+					"sp",
+					"mp"
+				],
+				"t5": [
+					"sp",
+					"mp"
+				],
+				"t6": [
+					"mp",
+					"zm"
+				]
+			},
+			"vanilla": false,
+			"supported_insts": [
+				"gsc"
+			],
+			"desc": "Checks whether <filename> exists.",
+			"use_case": "Allows detecting if a file exists or not before trying to open it.",
+			"fail_case": "Gracefully fails if <filename> doesn't exist and returns 0.",
+			"min_args": 1,
+			"max_args": 1,
+			"type": "function",
+			"developer": false,
+			"returns": {
+				"name": "file_exists",
+				"success_return_types": [
+					"G_VAR_TYPES:int"
+				],
+				"fail_return_types": [
+					"G_VAR_TYPES:int"
+				],
+				"return_structure": {},
+				"desc": "Returns 0 if file does not exist; 1 otherwise.",
+				"does_return": true
+			},
+			"special_errors": [],
+			"special_warnings": [],
+			"args": [
+				{
+					"name": "filename",
+					"ordinal": 1,
+					"expected_type": "G_VAR_TYPES:string",
+					"expected_values": "any file in the \"scriptdata\" folder or its subdirectories.",
+					"required": true,
+					"desc": "",
+					"default_value": ""
+				}
+			],
+			"best_practices": "",
+			"additional_notes": "",
+			"examples": [
+				"examples/fs_testfile.gsc"
+			],
+			"pseudocode": [
+				"pseudocode/fs_testfile.gsc"
+			],
+			"addon_key1": {},
+			"addon_key2": {},
+			"addon_key3": {},
+			"addon_key4": {},
+			"addon_key5": {}
+		},
+		"fs_fopen": {
+			"supported_games": {
+				"t4": [
+					"sp",
+					"mp"
+				],
+				"t5": [
+					"sp",
+					"mp"
+				],
+				"t6": [
+					"mp",
+					"zm"
+				]
+			},
+			"vanilla": false,
+			"supported_insts": [
+				"gsc"
+			],
+			"desc": "Checks whether <filename> exists.",
+			"use_case": "Allows detecting if a file exists or not before trying to open it.",
+			"fail_case": "Gracefully fails if <filename> doesn't exist and returns 0.",
+			"min_args": 1,
+			"max_args": 1,
+			"type": "function",
+			"developer": false,
+			"returns": {
+				"name": "file_exists",
+				"success_return_types": [
+					"G_VAR_TYPES:int"
+				],
+				"fail_return_types": [
+					"G_VAR_TYPES:int"
+				],
+				"return_structure": {},
+				"desc": "Returns 0 if file does not exist; 1 otherwise.",
+				"does_return": true
+			},
+			"special_errors": [],
+			"special_warnings": [],
+			"args": [
+				{
+					"name": "filename",
+					"ordinal": 1,
+					"expected_type": "G_VAR_TYPES:string",
+					"expected_values": "any file in the \"scriptdata\" folder or its subdirectories.",
+					"required": true,
+					"desc": "",
+					"default_value": ""
+				}
+			],
+			"best_practices": "",
+			"additional_notes": "",
+			"examples": [
+				"examples/fs_testfile.gsc"
+			],
+			"pseudocode": [
+				"pseudocode/fs_testfile.gsc"
+			],
+			"addon_key1": {},
+			"addon_key2": {},
+			"addon_key3": {},
+			"addon_key4": {},
+			"addon_key5": {}
+		}
+	}
+}

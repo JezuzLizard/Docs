@@ -5,7 +5,7 @@
 			"script",
 			"functions"
 		],
-		"desc": ""
+		"desc": "Module for the manipulation of script functions. Allows for detouring existing functions, and checking if a function exists to avoid compiler/resolver errors."
 	},
 	"body": {
 		"getfunction": {
@@ -31,10 +31,10 @@
 			"desc": "Returns {function_pointer} based on <function_path> and <function_name>. Does not trigger compilation or resolving of the script, therefore if the script isn't referenced by an include or far call by any other script at least once it will fail to find the function and return {undefined}.",
 			"use_case": "Useful in situations where you would like to reference a function that does not always exist in every context(map, gametype, game etc), without a unresolved external or compiler error occurring.",
 			"fail_case": "Fails when <function_path> and <function_name> cannot be resolved to a linked function.",
-			"min_args": "2",
-			"max_args": "2",
+			"min_args": 2,
+			"max_args": 2,
 			"type": "function",
-			"developer": "false",
+			"developer": false,
 			"returns": {
 				"name": "function_pointer",
 				"success_return_types": [
@@ -44,26 +44,27 @@
 					"G_VAR_TYPES:undefined"
 				],
 				"return_structure": {},
-				"desc": "Returns undefined or a function pointer to <function_name>."
+				"desc": "Returns undefined or a function pointer to <function_name>.",
+				"does_return": true
 			},
 			"special_errors": [],
 			"special_warnings": [],
 			"args": [
 				{
 					"name": "function_path",
-					"ordinal": "1",
+					"ordinal": 1,
 					"expected_type": "G_VAR_TYPES:string",
 					"expected_values": "any script path",
-					"required": "true",
+					"required": true,
 					"desc": "Path to try to find function. Standard is to use forward slashes and not escaped backslashes. Script instance must match(gsc to gsc, or csc to csc). Is only the <function_path> component of a far call: <function_path>::<function_name>",
 					"default_value": ""
 				},
 				{
 					"name": "function_name",
-					"ordinal": "2",
+					"ordinal": 2,
 					"expected_type": "G_VAR_TYPES:string",
 					"expected_values": "any script function",
-					"required": "true",
+					"required": true,
 					"desc": "Function to retrive a pointer for. The <function_name> component of a far call: <function_path>::<function_name>",
 					"default_value": ""
 				}
@@ -71,10 +72,10 @@
 			"best_practices": "",
 			"additional_notes": "",
 			"examples": [
-				"../examples/plutonium/function/getfunction.gsc"
+				"examples/getfunction.gsc"
 			],
 			"pseudocode": [
-				"../pseudocode/plutonium/function/getfunction.gsc"
+				"pseudocode/getfunction.gsc"
 			],
 			"addon_key1": {},
 			"addon_key2": {},
@@ -105,10 +106,10 @@
 			"desc": "Returns {function_name} of the input <function_pointer> in \"function_path::function_name\" format.",
 			"use_case": "Useful for debugging when you would like to print the name of an arbitrary function pointer.",
 			"fail_case": "N/A",
-			"min_args": "1",
-			"max_args": "1",
+			"min_args": 1,
+			"max_args": 1,
 			"type": "function",
-			"developer": "false",
+			"developer": false,
 			"returns": {
 				"name": "function_name",
 				"success_return_types": [
@@ -116,17 +117,18 @@
 				],
 				"fail_return_types": [],
 				"return_structure": {},
-				"desc": "Always returns a string upon correct usage."
+				"desc": "Always returns a string upon correct usage.",
+				"does_return": true
 			},
 			"special_errors": [],
 			"special_warnings": [],
 			"args": [
 				{
 					"name": "function_pointer",
-					"ordinal": "1",
+					"ordinal": 1,
 					"expected_type": "G_VAR_TYPES:function",
 					"expected_values": "any script function",
-					"required": "true",
+					"required": true,
 					"desc": "Script function to try to get the name of.",
 					"default_value": ""
 				}
@@ -134,10 +136,10 @@
 			"best_practices": "",
 			"additional_notes": "",
 			"examples": [
-				"../examples/plutonium/function/getfunctionname.gsc"
+				"examples/getfunctionname.gsc"
 			],
 			"pseudocode": [
-				"../pseudocode/plutonium/function/getfunctionname.gsc"
+				"pseudocode/getfunctionname.gsc"
 			],
 			"addon_key1": {},
 			"addon_key2": {},
@@ -168,10 +170,10 @@
 			"desc": "Detours <from_function> to <to_function> causing subsequent calls to <from_function> to instead call <to_function>. Can detour any function including engine invoked script callbacks, except builtins. If [priority] is not specified defaults to 0 allowing for successive replacefunc calls with a higher [priority] value to detour already detoured functions.",
 			"use_case": "Allows overriding existing vanilla behavior by overriding <from_function> to call your own <to_function>.",
 			"fail_case": "Fails if the replacefunc call's priority is lower than an existing detour's priority",
-			"min_args": "2",
-			"max_args": "3",
+			"min_args": 2,
+			"max_args": 3,
 			"type": "function",
-			"developer": "false",
+			"developer": false,
 			"returns": {
 				"name": "from_function",
 				"success_return_types": [
@@ -181,7 +183,8 @@
 					"G_VAR_TYPES:undefined"
 				],
 				"return_structure": {},
-				"desc": "Returns undefined or <from_function>."
+				"desc": "Returns undefined or <from_function>.",
+				"does_return": true
 			},
 			"special_warnings": [
 				"Attempting to override existing detour with lower priority.",
@@ -190,39 +193,39 @@
 			"args": [
 				{
 					"name": "from_function",
-					"ordinal": "1",
+					"ordinal": 1,
 					"expected_type": "G_VAR_TYPES:function",
 					"expected_values": "any script function",
-					"required": "true",
+					"required": true,
 					"desc": "Script function to replace calls to.",
 					"default_value": ""
 				},
 				{
 					"name": "to_function",
-					"ordinal": "2",
+					"ordinal": 2,
 					"expected_type": "G_VAR_TYPES:function",
 					"expected_values": "any script function",
-					"required": "true",
+					"required": true,
 					"desc": "Script function to detour to.",
 					"default_value": ""
 				},
 				{
 					"name": "priority",
-					"ordinal": "3",
+					"ordinal": 3,
 					"expected_type": "G_VAR_TYPES:int",
 					"expected_values": "any signed integer",
-					"required": "false",
+					"required": false,
 					"desc": "Priority value for successive replacefunc calls; the highest priority overall is what is called.",
 					"default_value": "0"
 				}
 			],
 			"best_practices": "Due to when the script VM may execute; if you want to guarantee your code overriding the original behavior you need to invoke replacefunc as early as possible. The best way to do that is in the main() of a custom script. Additionally, using replacefunc in tandem with getfunction can allow your script to be gametype/map/mode agnostic.",
-			"additional_notes": "T6 ONLY: You can use the command \"listscriptdetours\" to list the currently applied detours from replacefunc calls.",
+			"additional_notes": "T6 ONLY: You can use the command \"listscriptdetours\" to list the currently applied detours from replacefunc calls.\nReplaced funcs are cleared on fast_restart and currently do not save to the savefile.",
 			"examples": [
-				"../examples/plutonium/function/replacefunc.gsc"
+				"examples/replacefunc.gsc"
 			],
 			"pseudocode": [
-				"../pseudocode/plutonium/function/replacefunc.gsc"
+				"pseudocode/replacefunc.gsc"
 			],
 			"addon_key1": {},
 			"addon_key2": {},
@@ -253,10 +256,10 @@
 			"desc": "Given a <function_pointer> return the the current {function_detour} for that function.",
 			"use_case": "Allows for checking if an existing detour is applied to <function_pointer> and get a reference to {function_detour}.",
 			"fail_case": "<function_pointer> does not have a {function_detour}.",
-			"min_args": "1",
-			"max_args": "1",
+			"min_args": 1,
+			"max_args": 1,
 			"type": "function",
-			"developer": "false",
+			"developer": false,
 			"returns": {
 				"name": "function_detour",
 				"success_return_types": [
@@ -266,17 +269,18 @@
 					"G_VAR_TYPES:undefined"
 				],
 				"return_structure": {},
-				"desc": ""
+				"desc": "",
+				"does_return": true
 			},
 			"special_errors": [],
 			"special_warnings": [],
 			"args": [
 				{
 					"name": "function_pointer",
-					"ordinal": "1",
+					"ordinal": 1,
 					"expected_type": "G_VAR_TYPES:function",
 					"expected_values": "any script function",
-					"required": "true",
+					"required": true,
 					"desc": "Script function to get {function_detour} for.",
 					"default_value": ""
 				}
@@ -284,10 +288,10 @@
 			"best_practices": "",
 			"additional_notes": "",
 			"examples": [
-				"../examples/plutonium/function/getdetour.gsc"
+				"examples/getdetour.gsc"
 			],
 			"pseudocode": [
-				"../pseudocode/plutonium/function/getdetour.gsc"
+				"pseudocode/getdetour.gsc"
 			],
 			"addon_key1": {},
 			"addon_key2": {},
@@ -318,28 +322,29 @@
 			"desc": "Given a <function_pointer>, remove the detour from <function_pointer>.",
 			"use_case": "When you want to restore a detour'd function back to just calling the original function.",
 			"fail_case": "",
-			"min_args": "1",
-			"max_args": "1",
+			"min_args": 1,
+			"max_args": 1,
 			"type": "function",
-			"developer": "false",
+			"developer": false,
 			"returns": {
 				"name": "",
-				"success_return_types": [
-				],
-				"fail_return_types": [
-				],
+				"success_return_types": [],
+				"fail_return_types": [],
 				"return_structure": {},
-				"desc": ""
+				"desc": "",
+				"does_return": false
 			},
-			"special_errors": [ "If <function_pointer> is not a detour'd function pointer" ],
+			"special_errors": [
+				"If <function_pointer> is not a detour'd function pointer"
+			],
 			"special_warnings": [],
 			"args": [
 				{
 					"name": "function_pointer",
-					"ordinal": "1",
+					"ordinal": 1,
 					"expected_type": "G_VAR_TYPES:function",
 					"expected_values": "any script function that is detour'd",
-					"required": "true",
+					"required": true,
 					"desc": "A function pointer that has been detour'd by a call to replacefunc.",
 					"default_value": ""
 				}
@@ -347,10 +352,74 @@
 			"best_practices": "",
 			"additional_notes": "",
 			"examples": [
-				"../examples/plutonium/function/removedetour.gsc"
+				"examples/removedetour.gsc"
 			],
 			"pseudocode": [
-				"../pseudocode/plutonium/function/removedetour.gsc"
+				"pseudocode/removedetour.gsc"
+			],
+			"addon_key1": {},
+			"addon_key2": {},
+			"addon_key3": {},
+			"addon_key4": {},
+			"addon_key5": {}
+		},
+		"disabledetouronce": {
+			"supported_games": {
+				"t4": [
+					"sp",
+					"mp"
+				],
+				"t5": [
+					"sp",
+					"mp"
+				],
+				"t6": [
+					"mp",
+					"zm"
+				]
+			},
+			"vanilla": false,
+			"supported_insts": [
+				"csc",
+				"gsc"
+			],
+			"desc": "Given a <function_pointer>, disable the detour from <function_pointer> for only one call.",
+			"use_case": "When you want to call the original function for only one time, useful for 'hooking' function calls.",
+			"fail_case": "",
+			"min_args": 1,
+			"max_args": 1,
+			"type": "function",
+			"developer": false,
+			"returns": {
+				"name": "",
+				"success_return_types": [],
+				"fail_return_types": [],
+				"return_structure": {},
+				"desc": "",
+				"does_return": false
+			},
+			"special_errors": [
+				"If <function_pointer> is not a detour'd function pointer"
+			],
+			"special_warnings": [],
+			"args": [
+				{
+					"name": "function_pointer",
+					"ordinal": 1,
+					"expected_type": "G_VAR_TYPES:function",
+					"expected_values": "any script function that is detour'd",
+					"required": true,
+					"desc": "A function pointer that has been detour'd by a call to replacefunc.",
+					"default_value": ""
+				}
+			],
+			"best_practices": "",
+			"additional_notes": "",
+			"examples": [
+				"examples/disabledetouronce.gsc"
+			],
+			"pseudocode": [
+				"pseudocode/disabledetouronce.gsc"
 			],
 			"addon_key1": {},
 			"addon_key2": {},
